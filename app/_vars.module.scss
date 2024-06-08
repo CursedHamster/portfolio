@@ -1,0 +1,152 @@
+$primary-background-color: rgb(13, 13, 13);
+$primary-text-color: rgb(247, 247, 247);
+$secondary-background-color: rgb(29, 29, 31);
+$secondary-text-color: rgb(199, 199, 199);
+$pink-accent-color: rgb(255, 185, 206);
+$cyan-accent-color: rgb(140, 238, 196);
+$dark-pink-accent-color: rgb(255, 115, 174);
+$dark-cyan-accent-color: rgb(56, 172, 187);
+$red: rgb(255, 113, 113);
+$light-red: rgb(255, 204, 204);
+$light-green: rgb(221, 255, 241);
+$primary-gradient: linear-gradient(
+  104deg,
+  #ffffff 7.43%,
+  $pink-accent-color 53.52%,
+  $cyan-accent-color 106.89%
+);
+$primary-gradient-1: linear-gradient(
+  124deg,
+  #ffffff -70.43%,
+  $pink-accent-color 0%,
+  $cyan-accent-color 70.89%
+);
+$primary-gradient-2: linear-gradient(
+  124deg,
+  #ffffff 0%,
+  $pink-accent-color 100.52%,
+  $cyan-accent-color 200.89%
+);
+$pink-gradient: linear-gradient(
+  180deg,
+  $pink-accent-color 0%,
+  $dark-pink-accent-color 100%
+);
+$cyan-gradient: linear-gradient(
+  180deg,
+  $cyan-accent-color 0%,
+  $dark-cyan-accent-color 100%
+);
+$dark-gradient: linear-gradient(
+  138.28deg,
+  $secondary-background-color 7.94%,
+  $primary-background-color 117.4%
+);
+
+$shadow-pink-sm: 0px 20px 30px rgba($pink-accent-color, 0.2);
+$shadow-pink-md: 0px 5px 10px rgba($pink-accent-color, 0.4);
+
+$border-width-xs: 1px;
+$border-width-sm: 2px;
+$border-width-md: 4px;
+$text-stroke-light: $border-width-sm $primary-text-color;
+$text-stroke-dark: $border-width-sm $primary-background-color;
+
+$border-radius-sm: 0.75rem;
+$border-radius-md: 1.5rem;
+$border-radius-lg: 5rem;
+$border-radius-full: 50%;
+
+$font-size: 18px;
+$font-size-xs: 0.8rem;
+$font-size-sm: 1rem;
+$font-size-md: 1.2rem;
+$font-size-lg: 2rem;
+$font-size-xl: 3rem;
+$font-size-xxl: 5rem;
+
+$font-weight-sm: 400;
+$font-weight-md: 500;
+$font-weight-lg: 700;
+$font-weight-xl: 900;
+
+$padding-xs: 0.5rem;
+$padding-sm: 1rem;
+$padding-md: 2rem;
+$padding-lg: 5rem;
+$padding-xl: 10rem;
+
+$gap-sm: 0.5rem;
+$gap-md: 1rem;
+$gap-lg: 2rem;
+$gap-xl: 3rem;
+$gap-xxl: 5rem;
+
+$max-width-sm: 600px;
+$max-width-md: 1000px;
+$max-width-lg: 1400px;
+$max-width-xl: 1800px;
+
+$transition-sm: all 0.1s ease-in-out;
+$transition-md: all 0.3s ease-in-out;
+
+$icon-size-xs: 1rem;
+$icon-size-sm: 1.5rem;
+$icon-size-md: 2rem;
+$icon-size-lg: 3rem;
+$icon-size-xl: 3.5rem;
+$icon-size-xxl: 5rem;
+
+@mixin titleText(
+  $font: $font-size-xl,
+  $color: $primary-text-color,
+  $style: unset
+) {
+  font-weight: $font-weight-xl;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: $font;
+  color: $color;
+  font-style: $style;
+}
+
+@mixin titleStrokeText(
+  $stroke-width: $border-width-sm,
+  $color: $primary-text-color,
+  $font: $font-size-xl,
+  $style: unset
+) {
+  @include titleText($font, $color, $style);
+  color: transparent;
+  -webkit-text-stroke-width: $stroke-width;
+  -webkit-text-stroke-color: $color;
+}
+
+@mixin border($width: $border-width-sm, $color: $primary-text-color) {
+  border: $width solid $color;
+}
+
+@mixin title-text {
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+@mixin shadowBorder($size: 1px, $opacity: 1) {
+  box-shadow: inset 0px $size 0px rgba(255, 255, 255, $opacity);
+}
+
+:export {
+  primaryBackgroundColor: $primary-background-color;
+  primaryTextColor: $primary-text-color;
+  secondaryBackgroundColor: $secondary-background-color;
+  pinkAccentColor: $pink-accent-color;
+  darkPinkAccentColor: $dark-pink-accent-color;
+  primaryGradient: $primary-gradient;
+  primaryGradient1: $primary-gradient-1;
+  primaryGradient2: $primary-gradient-2;
+  pinkGradient: $pink-gradient;
+  shadowPinkSm: $shadow-pink-sm;
+  shadowPinkMd: $shadow-pink-md;
+  paddingSm: $padding-sm;
+}

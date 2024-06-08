@@ -1,0 +1,85 @@
+@import "../app/vars.module";
+
+.button {
+  position: relative;
+  cursor: pointer;
+  padding: $padding-sm $padding-md;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-sm;
+  font-weight: $font-weight-lg;
+  line-height: 1.5;
+  z-index: 0;
+
+  // @include border($border-width-sm, transparent);
+  svg {
+    stroke-width: $border-width-md;
+  }
+}
+
+.primary {
+  color: $primary-background-color;
+  background: $primary-text-color;
+  // box-shadow: 0px 5px 10px rgba($pink-accent-color, 0.4);
+  border-radius: $border-radius-lg;
+  -webkit-border-radius: $border-radius-lg;
+  -moz-border-radius: $border-radius-lg;
+  -ms-border-radius: $border-radius-lg;
+  -o-border-radius: $border-radius-lg;
+
+  .primary_background {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-image: $primary-gradient;
+    transform-origin: left;
+    opacity: 0;
+    z-index: -1;
+    /*transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    */
+    border-radius: $border-radius-lg;
+    -webkit-border-radius: $border-radius-lg;
+    -moz-border-radius: $border-radius-lg;
+    -ms-border-radius: $border-radius-lg;
+    -o-border-radius: $border-radius-lg;
+  }
+}
+
+.underline {
+  padding: $padding-sm $padding-xs;
+  font-weight: $font-weight-sm;
+  svg {
+    stroke-width: $border-width-sm;
+  }
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $border-width-md;
+  background: $primary-text-color;
+  background-image: $primary-gradient;
+}
+
+.gradient {
+  color: $primary-background-color;
+  // background-image: $primary-gradient;
+  border-radius: $border-radius-lg;
+  -webkit-border-radius: $border-radius-lg;
+  -moz-border-radius: $border-radius-lg;
+  -ms-border-radius: $border-radius-lg;
+  -o-border-radius: $border-radius-lg;
+}

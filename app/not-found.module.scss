@@ -1,0 +1,38 @@
+@import "@/app/_vars.module.scss";
+
+.container {
+    flex: 1;
+    padding: $padding-lg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $gap-xxl;
+}
+
+// .title_container {
+//     position: relative;
+// }
+
+// .title_absolute {
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     z-index: -1;
+// }
+
+@media (max-width: $max-width-sm) {
+    .container {
+        gap: $gap-xl;
+        text-align: center;
+        button {
+            width: 100%;
+            font-size: $font-size-md;
+        }
+    }
+    // .title_container {
+    //     text-align: center;
+    // }
+}

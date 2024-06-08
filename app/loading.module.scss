@@ -1,0 +1,64 @@
+.loading_container {
+  width: 100svw;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.bracket {
+  width: 5vw;
+  height: 10vh;
+  background: white;
+}
+
+.logo {
+  width: 10vw;
+  height: 10vw;
+  background: pink;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.left {
+  animation: bracket-left 2s linear infinite;
+  -webkit-animation: bracket-left 2s linear infinite;
+}
+
+.right {
+  animation: bracket-right 2s linear infinite;
+  -webkit-animation: bracket-right 2s linear infinite;
+}
+
+@mixin animation-mixin($name, $x) {
+  @keyframes #{$name} {
+    0% {
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -o-transform: translateX(0%);
+    }
+    50% {
+      transform: translateX($x);
+      -webkit-transform: translateX($x);
+      -moz-transform: translateX($x);
+      -ms-transform: translateX($x);
+      -o-transform: translateX($x);
+    }
+    100% {
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -o-transform: translateX(0%);
+    }
+  }
+}
+
+@include animation-mixin(bracket-left, -50%);
+@include animation-mixin(bracket-right, 50%);

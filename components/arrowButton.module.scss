@@ -1,0 +1,100 @@
+@import "@/app/_vars.module.scss";
+
+.nav_button {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $gap-lg;
+  svg {
+    width: $icon-size-lg;
+    height: auto;
+    stroke-width: $border-width-sm;
+  }
+  .text {
+    color: $primary-text-color;
+    font-size: $font-size-md;
+  }
+}
+
+.left {
+  flex-direction: row-reverse;
+  svg {
+    transform: rotate(180deg);
+  }
+  .nav_circle {
+    left: $gap-lg;
+  }
+  .nav_line {
+    left: $gap-lg;
+  }
+}
+.right {
+  .nav_circle {
+    right: $gap-lg;
+  }
+  .nav_line {
+    right: $gap-lg;
+  }
+}
+
+.nav_circle {
+  position: absolute;
+  width: $icon-size-lg;
+  aspect-ratio: 1/1;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  z-index: -1;
+
+  // @include border($border-width-sm, $secondary-text-color);
+  @include border($border-width-sm, $secondary-background-color);
+}
+
+.nav_line {
+  position: absolute;
+  width: 100%;
+  height: $border-width-sm;
+  // background: $secondary-text-color;
+  background: $secondary-background-color;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  z-index: -1;
+}
+
+.full_width {
+  svg {
+    width: $icon-size-lg * 1.5;
+  }
+  .text {
+    @include titleText();
+  }
+  .nav_line {
+    width: 50vw;
+  }
+}
+
+@media (max-width: $max-width-md) {
+  .full_width {
+    width: 100%;
+    justify-content: space-between;
+    &.left {
+      .nav_line {
+        left: unset;
+        right: 0;
+      }
+    }
+    &.right {
+      .nav_line {
+        right: unset;
+        left: 0;
+      }
+    }
+    .nav_line {
+        width: 100%;
+      }
+  }
+}

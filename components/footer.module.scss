@@ -1,0 +1,45 @@
+@import "../app/vars.module";
+
+.footer {
+  visibility: hidden;
+  padding: $padding-md $padding-xl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap-lg;
+}
+
+.copyright {
+  color: $secondary-text-color;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+@media (max-width: $max-width-lg) {
+  .footer {
+    padding: $padding-md $padding-lg;
+  }
+}
+
+@media (max-width: $max-width-md) {
+  .footer {
+    padding: $padding-md $padding-md;
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .footer {
+    // padding: $padding-md $padding-sm;
+    flex-direction: column-reverse;
+  }
+  .copyright {
+    text-align: center;
+  }
+  .socials {
+    gap: $gap-lg;
+  }
+}

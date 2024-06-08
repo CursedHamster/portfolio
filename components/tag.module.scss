@@ -1,0 +1,36 @@
+@import "../app/vars.module";
+
+.tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap-sm;
+  width: fit-content;
+  color: $primary-text-color;
+  padding: $padding-sm $padding-md;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-md;
+  background: $secondary-background-color;
+  //   box-shadow: inset 0px 1px 0px rgba($primary-text-color, 0.1);
+  // @include shadowBorder(1px, 0.1);
+
+  &.green {
+    // color: black;
+    // background: rgb(226, 255, 246);
+  }
+
+  &.red {
+    color: white;
+    background: rgb(255, 85, 85);
+  }
+}
+
+.circle {
+  display: block;
+  width: $icon-size-xs;
+  height: $icon-size-xs;
+  background: $cyan-gradient;
+  box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
+  border-radius: $border-radius-full;
+}

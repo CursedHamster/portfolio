@@ -1,0 +1,25 @@
+@import "@/app/_vars.module.scss";
+
+.drag_container {
+  // background-image: $primary-gradient;
+  padding: $padding-sm;
+  border-radius: $border-radius-md;
+  // @include shadowBorder($border-width-sm);
+}
+
+.drag_frame {
+  padding: $padding-md;
+  border-radius: $border-radius-md;
+  @include border($border-width-sm, $primary-background-color)
+}
+
+.drag_text {
+  width: 100%;
+  fill: $primary-background-color;
+  /* stroke: black; */
+  // stroke-width: $border-width-sm;
+  overflow: visible;
+  path {
+    transform-origin: $padding-md center;
+  }
+}

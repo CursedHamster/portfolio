@@ -1,0 +1,31 @@
+@import "../app/vars.module";
+
+.link {
+  width: $icon-size-xl;
+  height: $icon-size-xl;
+  color: $primary-text-color;
+  background: $secondary-background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius-full;
+  -webkit-border-radius: $border-radius-full;
+  -moz-border-radius: $border-radius-full;
+  -ms-border-radius: $border-radius-full;
+  -o-border-radius: $border-radius-full;
+  // @include shadowBorder(1px, 0.1);
+  svg {
+    width: $icon-size-sm;
+    height: auto;
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .link {
+    width: $icon-size-xxl;
+    height: $icon-size-xxl;
+    svg {
+      width: $icon-size-md;
+    }
+  }
+}
