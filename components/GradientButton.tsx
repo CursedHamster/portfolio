@@ -39,9 +39,21 @@ const GradientButton = (params: {
   });
 
   const gradientOnClick = (e: any) => {
-    if (params?.onClick) {
-      params?.onClick(e);
-    }
+    const el = e?.currentTarget
+    gsap.to(el, {
+      scale: 0.95,
+      duration: vars?.durationXs,
+      onComplete: () => {
+        gsap.to(el, {
+          scale: 1,
+          duration: vars?.durationXs,
+        }
+        )
+        if (params?.onClick) {
+          params?.onClick(e);
+        }
+      },
+    });
     if (params?.icon) {
       checkOnClick(e);
     }

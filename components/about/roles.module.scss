@@ -1,0 +1,71 @@
+@import "@/app/vars.module";
+
+
+.roles_container {
+  grid-area: roles;
+  justify-content: center;
+  // grid-area: 2 / 1 / 5 / 3;
+}
+
+.roles {
+  position: relative;
+  width: 100%;
+  height: 0px;
+  margin-top: $padding-sm;
+  padding: 0 $padding-md;
+  transform-style: preserve-3d;
+
+  .role {
+    cursor: pointer;
+    padding: $padding-sm $padding-sm;
+    display: flex;
+    align-items: center;
+    gap: $padding-sm;
+    font-size: $font-size-xs;
+    border-radius: $border-radius-sm;
+    background: $primary-background-color;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: calc(100% - ($padding-md) * 2);
+    height: fit-content;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    @include border($border-width-sm, $secondary-background-color);
+    svg {
+      width: $icon-size-sm;
+      height: auto;
+    }
+    &_1 {
+      opacity: 1;
+      transform: translateY(60%) translateZ(0) scale(1.1);
+    }
+    &_2 {
+      opacity: 0.2;
+      transform: translateY(0%) translateZ(-50px);
+    }
+    &_3 {
+      opacity: 0.2;
+      transform: translateY(120%) translateZ(-50px);
+    }
+  }
+}
+
+@media (max-width: $max-width-md) {
+  .roles {
+    .role {
+      width: calc(100% - $padding-lg);
+    }
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .roles {
+    .role {
+      // width: calc(100% - $padding-lg);
+      font-size: $font-size-sm;
+    }
+  }
+}

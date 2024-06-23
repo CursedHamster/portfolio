@@ -44,6 +44,14 @@ export default {
       icon: <IconBrandLinkedin />,
     },
   ],
+  hero: {
+    qualities: ["Hardworking", "Responsible", "Passionate"],
+    files: [
+      {name: "HelloWorld", extension: "jsx", text: "Hello World!"},
+      {name: "Home", extension: "jsx", text: "Thank you for visiting my website! \nHave a nice day ❀"},
+      {name: "styles", extension: "scss", text: ""}
+    ]
+  },
   about: {
     description: {
       emoji: "🐹🌸",
@@ -73,24 +81,24 @@ export default {
       degree: "Bachelor's degree, Information Systems and Technologies",
     },
     skills: [
-      {title: "HTML", icon: <IconBrandHtml5 />},
-      {title: "CSS", icon: <IconBrandCss3 />},
-      {title: "JavaScript", icon: <IconBrandJavascript />},
-      {title: "Vue.js", icon: <IconBrandVue />},
-      {title: "TypeScript", icon: <IconBrandTypescript />},
-      {title: "React.js", icon: <IconBrandReact />},
-      {title: "Next.js", icon: <IconBrandNextjs />},
-      {title: "Sass", icon: <IconBrandSass />},
-      {title: "Tailwind", icon: <IconBrandTailwind />},
-      {title: "GSAP", icon: <IconSock />},
-      {title: "LESS", icon: <IconBraces />},
-      {title: "Bootstrap", icon: <IconBrandBootstrap />},
-      {title: "Three.js", icon: <IconBrandThreejs />},
-      {title: "Figma", icon: <IconBrandFigma />},
-      {title: "Spring", icon: <IconLeaf />},
-      {title: "Python", icon: <IconBrandPython />},
-      {title: "Java", icon: <IconCoffee />},
-      {title: "SQL", icon: <IconSql />},
+      { title: "HTML", icon: <IconBrandHtml5 /> },
+      { title: "CSS", icon: <IconBrandCss3 /> },
+      { title: "JavaScript", icon: <IconBrandJavascript /> },
+      { title: "Vue.js", icon: <IconBrandVue /> },
+      { title: "TypeScript", icon: <IconBrandTypescript /> },
+      { title: "React.js", icon: <IconBrandReact /> },
+      { title: "Next.js", icon: <IconBrandNextjs /> },
+      { title: "Sass", icon: <IconBrandSass /> },
+      { title: "Tailwind", icon: <IconBrandTailwind /> },
+      { title: "GSAP", icon: <IconSock /> },
+      { title: "LESS", icon: <IconBraces /> },
+      { title: "Bootstrap", icon: <IconBrandBootstrap /> },
+      { title: "Three.js", icon: <IconBrandThreejs /> },
+      { title: "Figma", icon: <IconBrandFigma /> },
+      { title: "Spring", icon: <IconLeaf /> },
+      { title: "Python", icon: <IconBrandPython /> },
+      { title: "Java", icon: <IconCoffee /> },
+      { title: "SQL", icon: <IconSql /> },
     ],
     interests: [
       {

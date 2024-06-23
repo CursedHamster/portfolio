@@ -1,0 +1,61 @@
+@import "@/app/vars.module";
+
+.interests {
+  padding: $padding-sm $padding-md 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .active {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .interest {
+      background: $secondary-background-color;
+      transform: scale(1.2);
+    }
+    .arrow {
+      cursor: pointer;
+      width: $icon-size-sm;
+      height: auto;
+      fill: $secondary-background-color;
+      transition: $transition-md;
+      &.left:hover {
+        transform: translateX(-2px);
+      }
+      &.right:hover {
+        transform: translateX(2px);
+      }
+      &:active {
+        fill: $secondary-text-color;
+      }
+    }
+  }
+}
+
+.interest {
+  height: 100%;
+  overflow: hidden;
+  padding: $padding-xs;
+  background: $primary-background-color;
+  border-radius: $border-radius-sm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include border($border-width-sm, $secondary-background-color);
+  svg {
+    display: block;
+    width: $icon-size-md;
+    height: $icon-size-md;
+    color: $pink-accent-color;
+    stroke-dasharray: 300;
+    stroke: url(#pink_gradient);
+  }
+}
+
+@media (max-width: $max-width-md) {
+  .interest {
+    padding: $padding-sm;
+  }
+}

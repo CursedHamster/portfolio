@@ -17,22 +17,25 @@ const Footer = () => {
   useGSAP(() => {
     gsap.from(".footer", {
       autoAlpha: 0,
+      yPercent: 100,
       duration: vars?.durationMd,
     });
   });
   return (
-    <footer className={`${styles.footer} footer main_opacity`}>
-      <p className={styles.copyright}>
-        ©2024. Created by Viktoriia Harniuk. All rights reserved.
-      </p>
-      <div className={styles.socials}>
-        {data?.socials?.map((social, i) => (
-          <IconLink
-            key={`contacts_icon_link_${i + 1}`}
-            icon={social?.icon}
-            link={social?.link}
-          />
-        ))}
+    <footer className={`main_opacity`}>
+      <div className={`${styles.footer} footer`}>
+        <p className={styles.copyright}>
+          ©2024. Created by Viktoriia Harniuk. All rights reserved.
+        </p>
+        <div className={styles.socials}>
+          {data?.socials?.map((social, i) => (
+            <IconLink
+              key={`contacts_icon_link_${i + 1}`}
+              icon={social?.icon}
+              link={social?.link}
+            />
+          ))}
+        </div>
       </div>
     </footer>
   );

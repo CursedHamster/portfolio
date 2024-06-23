@@ -15,7 +15,6 @@ Features:
 - times - an Array of the times on the timeline where each element hits the "starting" spot. There's also a label added accordingly, so "label1" is when the 2nd element reaches the start.
 */
 export default function horizontalLoop(items, config) {
-  console.log("init");
   items = gsap.utils.toArray(items);
   config = config || {};
   let tl = gsap.timeline({

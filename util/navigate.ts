@@ -7,7 +7,6 @@ export default function navigate(
   // page?: any
 ) {
   const transitionElement = document?.getElementById("transition_element");
-
   if (
     transitionElement &&
     !(

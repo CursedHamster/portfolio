@@ -20,15 +20,21 @@ export default function NotFound({
   const router = useRouter();
 
   useGSAP(() => {
-    gsap.from(".error_title", {
+    // gsap.from(".error_title", {
+    //   autoAlpha: 0,
+    //   yPercent: -100,
+    //   duration: vars?.enterAnimationDuration,
+    // });
+    // gsap.from(".error_button", {
+    //   autoAlpha: 0,
+    //   yPercent: -100,
+    //   duration: vars?.enterAnimationDuration,
+    // });
+    gsap.from(`.${styles.container}>*`, {
       autoAlpha: 0,
       yPercent: -100,
       duration: vars?.enterAnimationDuration,
-    });
-    gsap.from(".error_button", {
-      autoAlpha: 0,
-      yPercent: -100,
-      duration: vars?.enterAnimationDuration,
+      stagger: vars?.enterAnimationDuration / 2,
     });
   });
 
@@ -58,7 +64,9 @@ export default function NotFound({
 
   return (
     <div className={`${styles.container} main_opacity`}>
-      <h2 className="title hidden error_title">Page <span className="extra">not found</span></h2>
+      <h2 className="title hidden error_title">
+        Page <span className="extra">not found</span>
+      </h2>
       <PrimaryButton
         text="Back to Home page"
         className={`hidden error_button`}

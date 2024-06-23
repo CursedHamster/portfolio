@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import styles from "./button.module.scss";
+import styleVars from "@/app/_vars.module.scss";
 import vars from "@/data/vars";
 
 const UnderlineButton = (params: {
@@ -17,11 +18,11 @@ const UnderlineButton = (params: {
   const [rightAnimation, setRightAnimation] = useState<GSAPTween>();
   const rightOnMouseEnter = contextSafe((e: any) => {
     const buttonSelector = gsap.utils.selector(e?.currentTarget);
-    gsap.fromTo(
-      buttonSelector(".line"),
-      { left: 0 },
-      { width: 0, duration: vars?.durationMd, ease: "none" }
-    );
+    // gsap.fromTo(
+    //   buttonSelector(".line"),
+    //   { left: 0 },
+    //   { width: 0, duration: vars?.durationMd, ease: "none" }
+    // );
     if (!rightAnimation) {
       setRightAnimation(
         gsap.to(buttonSelector(".right"), {
@@ -44,27 +45,63 @@ const UnderlineButton = (params: {
       xPercent: 0,
       duration: vars?.durationMd,
     });
-    gsap.to(buttonSelector(".line"), {
-      width: "100%",
-      duration: vars?.durationMd,
-    });
+    // gsap.to(buttonSelector(".line"), {
+    //   width: "100%",
+    //   duration: vars?.durationMd,
+    // });
   });
 
   const rightOnClick = contextSafe((e: any) => {
     const buttonSelector = gsap.utils.selector(e?.currentTarget);
     rightAnimation?.pause();
     gsap.to(buttonSelector(".right"), {
-      xPercent: 0,
+      xPercent: 200,
+      autoAlpha: 0,
       duration: vars?.durationMd,
+      onComplete: () => {
+        gsap.fromTo(
+          buttonSelector(".right"),
+          { xPercent: 0, scale: 0, autoAlpha: 0 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: vars?.durationMd,
+          }
+        );
+      },
     });
-    gsap.fromTo(
-      buttonSelector(".line"),
-      { left: "unset" },
-      {
-        width: "100%",
-        duration: vars?.durationMd,
-      }
-    );
+    // gsap.fromTo(
+    //   buttonSelector(".line"),
+    //   { left: "unset" },
+    //   {
+    //     width: "100%",
+    //     duration: vars?.durationMd,
+    //   }
+    // );
+  });
+
+  const underlineOnMouseEnter = contextSafe((e: any) => {
+    // const buttonSelector = gsap.utils.selector(e?.currentTarget);
+    // gsap.to(buttonSelector(`.${styles.underline_background}`), {
+    //   // borderColor: styleVars?.primaryTextColor,
+    //   autoAlpha: 1,
+    //   duration: vars?.durationSm,
+    // });
+    if (params?.icon) {
+      rightOnMouseEnter(e);
+    }
+  });
+
+  const underlineOnMouseLeave = contextSafe((e: any) => {
+    // const buttonSelector = gsap.utils.selector(e?.currentTarget);
+    // gsap.to(buttonSelector(`.${styles.underline_background}`), {
+    //   // borderColor: styleVars?.secondaryBackgroundColor,
+    //   autoAlpha: 0,
+    //   duration: vars?.durationSm,
+    // });
+    if (params?.icon) {
+      rightOnMouseLeave(e);
+    }
   });
 
   const underlineOnClick = (e: any) => {
@@ -78,15 +115,16 @@ const UnderlineButton = (params: {
   return (
     <button
       className={`${styles.button} ${styles.underline} ${params?.className}`}
-      onMouseEnter={params?.icon ? rightOnMouseEnter : undefined}
-      onMouseLeave={params?.icon ? rightOnMouseLeave : undefined}
+      onMouseEnter={underlineOnMouseEnter}
+      onMouseLeave={underlineOnMouseLeave}
       onClick={underlineOnClick}
     >
       {params?.text}
       {params?.icon && (
         <IconArrowNarrowRight className={`${styles.right} right`} />
       )}
-      <div className={`${styles.line} line`}></div>
+      {/* <span className={styles.underline_background}></span> */}
+      {/* <div className={`${styles.line} line`}></div> */}
     </button>
   );
 };

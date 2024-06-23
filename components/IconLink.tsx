@@ -4,7 +4,7 @@ import styles from "./iconLink.module.scss";
 import styleVars from "@/app/_vars.module.scss";
 import vars from "@/data/vars";
 
-const IconLink = (props: { icon: any; link?: string }) => {
+const IconLink = (props: { icon: any; link?: string, className?: string }) => {
   gsap?.registerPlugin(useGSAP);
   const { contextSafe } = useGSAP();
 
@@ -28,7 +28,7 @@ const IconLink = (props: { icon: any; link?: string }) => {
     <a
       href={props?.link}
       target="_blank"
-      className={styles.link}
+      className={`${styles.link} ${props?.className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

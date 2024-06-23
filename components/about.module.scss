@@ -25,7 +25,7 @@
     "skills skills socials music edu edu edu";
   row-gap: $gap-lg;
   column-gap: $gap-md;
-  padding: $padding-sm $padding-xl;
+  padding: 0 $padding-xl;
 }
 
 .grid_element {
@@ -51,6 +51,7 @@
   width: 100%;
   text-align: center;
   line-height: 1;
+  padding: 0 $padding-sm;
   @include titleText($font-size-lg);
 }
 
@@ -67,34 +68,6 @@
   }
 }
 
-.banner {
-  min-height: 70vh;
-  grid-area: banner;
-  /* grid-row: span 4; */
-  justify-content: center;
-  // align-items: stretch;
-  padding: $padding-md $padding-sm;
-  gap: $gap-xxl;
-  overflow: hidden;
-  @include shadowBorder(2px);
-  h3 {
-    width: 100%;
-    @include titleText($font-size-xxl, $primary-background-color);
-    word-wrap: break-word;
-    &:nth-child(2) {
-      text-align: end;
-      @include titleStrokeText(
-          $border-width-md,
-          $secondary-background-color,
-          $font-size-xxl,
-          italic
-        )
-        // color: white;
-;
-    }
-  }
-}
-
 .title_container {
   padding: 2vw;
   grid-area: about;
@@ -108,10 +81,9 @@
   h2 {
     max-width: 100%;
     word-wrap: break-word;
-    @include titleStrokeText(
-      $border-width-sm,
-      $primary-background-color,
+    @include titleText(
       $font-size-xxl,
+      $primary-background-color,
       italic
     );
   }
@@ -235,124 +207,10 @@
   }
 }
 
-// .languages {
-//   font-size: $font-size-md;
-//   padding: 0 $padding-md $padding-sm;
-// }
-
-// .lang_level {
-//   background: $primary-background-color;
-//   padding: 0 $padding-xs;
-//   margin-left: $padding-xs;
-// }
-
-// .cursor_lang {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   pointer-events: none;
-//   font-size: $font-size-xl;
-//   font-family: "Noto Color Emoji", sans-serif;
-//   font-weight: $font-weight-sm;
-//   font-style: normal;
-// }
-
 .roles_container {
   grid-area: roles;
   justify-content: center;
   // grid-area: 2 / 1 / 5 / 3;
-}
-
-// .roles {
-//   position: relative;
-//   width: 100%;
-//   height: 150px;
-//   margin-top: $padding-sm;
-//   padding: 0 $padding-md;
-//   display: flex;
-//   flex-direction: column;
-//   gap: $gap-sm;
-
-//   .role {
-//     cursor: pointer;
-//     padding: $padding-sm $padding-sm;
-//     display: flex;
-//     align-items: center;
-//     gap: $padding-sm;
-//     font-size: $font-size-xs;
-//     border-radius: $border-radius-sm;
-//     background: $primary-background-color;
-//     opacity: 0.2;
-//     @include border($border-width-sm, $secondary-background-color);
-//     svg {
-//       width: $icon-size-sm;
-//       height: auto;
-//     }
-//     &.top {
-//       order: 1;
-//     }
-//     &.bottom {
-//       order: 2;
-//     }
-//     &.active {
-//       position: absolute;
-//       width: calc(100% - ($padding-md) * 2);
-//       height: fit-content;
-//       transform: scale(1.1);
-//       opacity: 1;
-//       left: 0;
-//       top: 0;
-//       right: 0;
-//       bottom: 0;
-//       margin: auto;
-//       z-index: 1;
-//     }
-//   }
-// }
-
-.roles {
-  position: relative;
-  width: 100%;
-  height: 0px;
-  margin-top: $padding-sm;
-  padding: 0 $padding-md;
-  transform-style: preserve-3d;
-
-  .role {
-    cursor: pointer;
-    padding: $padding-sm $padding-sm;
-    display: flex;
-    align-items: center;
-    gap: $padding-sm;
-    font-size: $font-size-xs;
-    border-radius: $border-radius-sm;
-    background: $primary-background-color;
-    opacity: 0.2;
-    transform-style: preserve-3d;
-    position: absolute;
-    width: calc(100% - ($padding-md) * 2);
-    height: fit-content;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    @include border($border-width-sm, $secondary-background-color);
-    svg {
-      width: $icon-size-sm;
-      height: auto;
-    }
-    &_1 {
-      opacity: 1;
-      transform: translateY(60%) translateZ(0) scale(1.1);
-    }
-    &_2 {
-      transform: translateY(0%) translateZ(-50px);
-    }
-    &_3 {
-      transform: translateY(120%) translateZ(-50px);
-    }
-  }
 }
 
 .skills_container {
@@ -388,20 +246,6 @@
     box-shadow: inset 0px 0px 2rem 2rem $primary-background-color;
     z-index: 1;
   }
-  // &::after {
-  //   content: "";
-  //   pointer-events: none;
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   border-radius: $border-radius-md;
-  //   @include shadowBorder($border-width-sm, 0.1);
-  //   z-index: 2;
-  // }
 }
 
 .skills_group {
@@ -431,6 +275,8 @@
     transition: opacity 0.1s ease-in-out;
     border-radius: $border-radius-sm;
     background: $secondary-background-color;
+    // background: $primary-background-color;
+    // @include border($border-width-sm, $secondary-background-color);
     // @include border();
     &:hover {
       font-style: italic;
@@ -532,96 +378,6 @@
   }
 }
 
-.interests {
-  padding: $padding-sm $padding-md 0;
-  width: 100%;
-  display: flex;
-  // justify-content: space-between;
-  justify-content: center;
-  align-items: center;
-  .active {
-    // flex: 1;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .interest {
-      background: $secondary-background-color;
-      transform: scale(1.2);
-    }
-    .arrow {
-      cursor: pointer;
-      width: $icon-size-sm;
-      height: auto;
-      fill: $secondary-background-color;
-      transition: $transition-md;
-      &.left:hover {
-        transform: translateX(-2px);
-      }
-      &.right:hover {
-        transform: translateX(2px);
-      }
-      &:active {
-        fill: $secondary-text-color;
-      }
-    }
-  }
-}
-
-.interest {
-  // flex: 1;
-  // width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding: $padding-xs;
-  background: $primary-background-color;
-  border-radius: $border-radius-sm;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @include border($border-width-sm, $secondary-background-color);
-  svg {
-    display: block;
-    width: $icon-size-md;
-    height: $icon-size-md;
-    // fill: url(#pink_gradient);
-    color: $pink-accent-color;
-    stroke-dasharray: 300;
-    stroke: url(#pink_gradient);
-  }
-}
-// .interests_emoji {
-//   position: absolute;
-//   cursor: default;
-//   filter: blur(50px);
-//   z-index: -1;
-//   -webkit-filter: blur(20px);
-//   transition: $transition-md;
-
-//   &:hover {
-//     filter: blur(0);
-//     -webkit-filter: blur(0);
-//   }
-// }
-
-// .interests_emoji_1 {
-//   top: 0;
-//   left: 20%;
-// }
-// .interests_emoji_2 {
-//   top: 10%;
-//   left: 50%;
-// }
-// .interests_emoji_3 {
-//   bottom: 30%;
-//   right: 10%;
-//   z-index: 1;
-// }
-// .interests_emoji_4 {
-//   bottom: 10%;
-//   left: 30%;
-// }
-
 .music_container {
   position: relative;
   grid-area: music;
@@ -687,7 +443,7 @@
   .grid {
     // padding: $padding-sm $padding-lg;
     grid-template-columns: 2.5fr 1fr 1.5fr 1fr repeat(3, 0.5fr);
-    grid-template-rows: 1fr 1fr 0.5fr 1.5fr;
+    grid-template-rows: 1fr 0.75fr 0.25fr 1.25fr;
     grid-template-areas:
       "about desc desc desc desc desc lang"
       "roles socials socials interests interests interests interests"
@@ -698,13 +454,13 @@
 
 @media (max-width: $max-width-lg) {
   .grid {
-    padding: $padding-sm $padding-lg;
+    padding: 0 $padding-lg;
   }
 }
 
 @media (max-width: $max-width-md) {
   .grid {
-    padding: $padding-sm $padding-md;
+    padding: 0 $padding-md;
     // grid-template-columns: 2fr 0.5fr 1fr 0.5fr 1fr 1fr;
     // grid-template-rows: 1.5fr 1.5fr 0.5fr 1fr;
     // grid-template-areas:
@@ -730,7 +486,7 @@
 
   .roles {
     .role {
-      width: calc(100% - ($padding-lg) * 2);
+      width: calc(100% - $padding-lg);
     }
   }
 
@@ -798,7 +554,7 @@
 
   .roles {
     .role {
-      width: calc(100% - ($padding-lg) * 2);
+      // width: calc(100% - $padding-lg);
       font-size: $font-size-sm;
     }
   }

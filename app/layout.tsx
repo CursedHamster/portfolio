@@ -26,7 +26,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        <div className="background_gradient"></div>
+        {/* <div className="background_gradient"></div> */}
       </body>
     </html>
   );

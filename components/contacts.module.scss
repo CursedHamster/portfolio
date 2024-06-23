@@ -1,7 +1,7 @@
 @import "../app/vars.module";
 
 .contacts_container {
-  padding: $padding-md $padding-xl;
+  padding: 0 $padding-xl;
 }
 
 .form_container {
@@ -11,6 +11,7 @@
 }
 
 .form_text {
+  overflow-y: hidden;
   flex: 40%;
   color: $secondary-text-color;
   display: flex;
@@ -134,7 +135,6 @@
 } */
 
 .message_sent {
-  visibility: hidden;
   position: fixed;
   left: 0;
   right: 0;
@@ -144,13 +144,16 @@
 
 @media (max-width: $max-width-lg) {
   .contacts_container {
-    padding: $padding-md $padding-lg;
+    padding: 0 $padding-lg;
+  }
+  .form_container {
+    gap: $gap-lg;
   }
 }
 
 @media (max-width: $max-width-md) {
   .contacts_container {
-    padding: $padding-md $padding-md;
+    padding: 0 $padding-md;
   }
   .form_container {
     flex-direction: column;
@@ -176,4 +179,15 @@
 }
 
 @media (max-width: $max-width-sm) {
+  .form_text {
+    text-align: justify;
+    // svg {
+    //   position: absolute;
+    //   width: $icon-size-xxl * 2;
+    //   z-index: -1;
+    //   opacity: 0.1;
+    //   top: -($icon-size-xxl);
+    //   left: -($icon-size-xxl) / 1.2;
+    // }
+  }
 }

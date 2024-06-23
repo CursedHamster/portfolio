@@ -1,0 +1,136 @@
+@import "@/app/_vars.module.scss";
+
+$react_color: rgb(130, 179, 243);
+$sass_color: $dark-pink-accent-color;
+$color_1: $dark-pink-accent-color;
+$color_2: rgb(255, 218, 133);
+$color_3: rgb(227, 192, 255);
+$color_4: $pink-accent-color;
+$studio-icon-size-sm: 1.5em;
+$studio-icon-size-md: 2em;
+$studio-icon-size-xl: 3.5em;
+$studio-gap-sm: 0.5em;
+$studio-gap-md: 1em;
+
+
+.studio_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 5/3;
+  background: $primary-background-color;
+  border-radius: $border-radius-md;
+  @include border($border-width-sm, $secondary-background-color);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: $padding-xs $padding-md;
+  color: $secondary-background-color;
+  .dots {
+    height: $studio-icon-size-md;
+    width: auto;
+  }
+  .controls_container {
+    display: flex;
+    align-items: center;
+    gap: $studio-gap-sm;
+    & > * {
+      width: $studio-icon-size-sm;
+      height: auto;
+    }
+    .minimize {
+      width: $studio-icon-size-sm * 0.8;
+      height: $border-width-sm;
+      background: $secondary-background-color;
+      border-radius: $border-width-sm;
+    }
+    .full_screen {
+      width: $studio-icon-size-sm * 0.8;
+    }
+  }
+}
+
+.main_container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.main_header {
+  width: 100%;
+  height: $studio-icon-size-xl;
+  background: $secondary-background-color;
+  padding: $padding-xs $padding-sm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $studio-gap-md;
+  color: $secondary-text-color;
+  svg {
+    height: $studio-icon-size-sm;
+    width: auto;
+  }
+}
+
+.filename {
+  display: flex;
+  align-items: center;
+  gap: $studio-gap-sm;
+  svg {
+    width: $studio-icon-size-sm;
+    height: auto;
+  }
+  .icon_react {
+    color: $react_color;
+  }
+  .icon_sass {
+    color: $sass_color;
+  }
+}
+
+.explorer {
+  flex: 30%;
+  height: auto;
+  border-right: $border-width-sm solid $secondary-background-color;
+  &_file {
+    cursor: pointer;
+    padding: $padding-xs $padding-sm;
+    &.active {
+      background: rgba($secondary-background-color, 0.6);
+    }
+  }
+}
+
+.file {
+  flex: 70%;
+  display: flex;
+  flex-direction: column;
+  // height: 100%;
+  // min-height: fit-content;
+}
+
+.code_container {
+  padding: $padding-md $padding-sm;
+  flex: 1;
+  overflow-y: auto;
+  .tab {
+    padding-left: $padding-sm;
+  }
+  .color_1 {
+    color: $color_1;
+  }
+  .color_2 {
+    color: $color_2;
+  }
+  .color_3 {
+    color: $color_3;
+  }
+  .color_4 {
+    color: $color_4;
+  }
+}

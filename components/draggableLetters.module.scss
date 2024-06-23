@@ -2,15 +2,18 @@
 
 .drag_container {
   // background-image: $primary-gradient;
-  padding: $padding-sm;
+  // padding: $padding-sm;
+  padding: 0;
   border-radius: $border-radius-md;
   // @include shadowBorder($border-width-sm);
 }
 
 .drag_frame {
-  padding: $padding-md;
-  border-radius: $border-radius-md;
-  @include border($border-width-sm, $primary-background-color)
+  width: 100%;
+  height: 100%;
+  padding: $padding-lg;
+  // border-radius: $border-radius-md;
+  // @include border($border-width-sm, $primary-background-color)
 }
 
 .drag_text {
@@ -22,4 +25,10 @@
   path {
     transform-origin: $padding-md center;
   }
+}
+
+@media (max-width: $max-width-md) {
+  .drag_container {
+    padding: $padding-md $padding-lg;
+  } 
 }

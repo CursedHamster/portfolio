@@ -17,8 +17,10 @@
 
 .logo {
   cursor: pointer;
-  width: 5rem;
+  max-width: $icon-size-lg;
+  width: auto;
   height: auto;
+  max-height: $icon-size-lg;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +63,7 @@
 }
 
 .close {
+  cursor: pointer;
   margin: $padding-md;
   height: $icon-size-lg;
   width: auto;
@@ -68,6 +71,7 @@
 }
 
 .burger {
+  cursor: pointer;
   height: $icon-size-lg;
   width: auto;
 }
@@ -87,6 +91,7 @@
 }
 
 .nav_mobile_li {
+  cursor: pointer;
   position: relative;
   display: flex;
   justify-content: space-between;

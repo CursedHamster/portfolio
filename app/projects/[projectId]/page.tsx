@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {
-  IconArrowNarrowLeft,
   IconArrowNarrowRight,
   IconArrowNarrowDown,
 } from "@tabler/icons-react";
@@ -16,6 +15,7 @@ import ArrowButton from "@/components/ArrowButton";
 import Contacts from "@/components/Contacts";
 import data from "@/data/data";
 import vars from "@/data/vars";
+import navigate from "@/util/navigate";
 
 const page = ({ params }: { params: { projectId: string } }) => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -210,9 +210,10 @@ const page = ({ params }: { params: { projectId: string } }) => {
   return (
     <section className={styles.project_container}>
       <div className={`${styles.title_container} main_opacity`}>
-        <h1 className={`title hidden project_title_left`}>
-          {projectData?.title}
-        </h1>
+        <div className={`${styles.title} hidden project_title_left`}>
+          <h1 className={`title`}>{projectData?.title}</h1>
+          <p className={styles.title_year}>{projectData?.year}</p>
+        </div>
         <a
           href={projectData?.websiteLink}
           target="_blank"
@@ -225,7 +226,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
           <IconArrowNarrowRight className="project_website_link" />
         </a>
       </div>
-      <div
+      {/* <div
         className={`${styles.tech_list} main_opacity hidden project_tech_list`}
       >
         {projectData?.techUsed?.map((tech, i) => (
@@ -236,22 +237,32 @@ const page = ({ params }: { params: { projectId: string } }) => {
             {tech}
           </p>
         ))}
-      </div>
+      </div> */}
       <div className={`${styles.contents_container} main_opacity`}>
         <div className={`${styles.info_container} project_info_container`}>
-          <div className={`${styles.info_group} hidden`}>
-            <p className={styles.info_label}>Type</p>
-            <p className={styles.info_field}>{projectData?.type}</p>
-          </div>
-          <div className={`${styles.info_group} hidden`}>
-            <p className={styles.info_label}>Year</p>
-            <p className={styles.info_field}>{projectData?.year}</p>
+          <div className={`${styles.info_group} ${styles.info_full} hidden`}>
+            <p className={styles.info_label}>Technologies & Tools</p>
+            <div className={`${styles.tech_list}`}>
+              {projectData?.techUsed?.map((tech, i) => (
+                <p key={`tech_${i}`} className={`${styles.tech}`}>
+                  {tech}
+                </p>
+              ))}
+            </div>
           </div>
           <div className={`${styles.info_group} hidden`}>
             <p className={styles.info_label}>Role</p>
             <p className={styles.info_field}>{projectData?.role?.join(", ")}</p>
           </div>
           <div className={`${styles.info_group} hidden`}>
+            <p className={styles.info_label}>Type</p>
+            <p className={styles.info_field}>{projectData?.type}</p>
+          </div>
+          {/* <div className={`${styles.info_group} hidden`}>
+            <p className={styles.info_label}>Year</p>
+            <p className={styles.info_field}>{projectData?.year}</p>
+          </div> */}
+          <div className={`${styles.info_group} ${styles.info_full} hidden`}>
             <p className={styles.info_label}>Description</p>
             <p className={styles.info_field}>{projectData?.description}</p>
           </div>
@@ -312,8 +323,18 @@ const page = ({ params }: { params: { projectId: string } }) => {
             ></div>
             <div className={`${styles.nav_line} nav_line main_opacity`}></div>
           </button> */}
-          <ArrowButton text="PREV" direction="left" type="navigate" onClick={goToPrevProject} />
-          <ArrowButton text="NEXT" direction="right" type="navigate" onClick={goToNextProject} />
+          <ArrowButton
+            text="PREV"
+            direction="left"
+            type="navigate"
+            onClick={goToPrevProject}
+          />
+          <ArrowButton
+            text="NEXT"
+            direction="right"
+            type="navigate"
+            onClick={goToNextProject}
+          />
           {/* <button
             className={`${styles.nav_button} ${styles.right}`}
             onMouseEnter={(e) => onMouseEnterNavButton(e, false)}

@@ -91,9 +91,10 @@ const Projects = () => {
         ".projects_table>*",
         {
           autoAlpha: 0,
-          yPercent: -vars?.offsetSm,
+          scale: 1.05,
+          yPercent: -50,
           duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 5,
+          stagger: vars?.enterAnimationDuration / 3,
         },
         0
       );

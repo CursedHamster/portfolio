@@ -2,7 +2,7 @@
 
 .projects_container {
   position: relative;
-  padding: $padding-xl $padding-xl;
+  padding: 0 $padding-xl;
   z-index: 5;
 }
 
@@ -122,6 +122,7 @@
 .projects_table {
   margin-top: $gap-xl;
   > * {
+    transform-origin: bottom center;
     width: 100%;
     /* margin-top: 2rem; */
   }
@@ -197,15 +198,22 @@
 
 @media (max-width: $max-width-lg) {
   .projects_container {
-    padding: $padding-lg $padding-lg;
+    padding: 0 $padding-lg;
   }
 }
 
 @media (max-width: $max-width-md) {
   .projects_container {
-    padding: $padding-lg $padding-md;
+    padding: 0 $padding-md;
   }
 }
 
 @media (max-width: $max-width-sm) {
+  .project_row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .project_role {
+    display: none;
+  }
 }

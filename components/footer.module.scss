@@ -1,6 +1,8 @@
 @import "../app/vars.module";
 
 .footer {
+  width: 100%;
+  height: fit-content;
   visibility: hidden;
   padding: $padding-md $padding-xl;
   display: flex;

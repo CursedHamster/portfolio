@@ -14,6 +14,7 @@ import {
 import GradientButton from "./GradientButton";
 import navigate from "@/util/navigate";
 import styles from "./header.module.scss";
+import styleVars from "@/app/_vars.module.scss";
 import data from "../data/data";
 import vars from "@/data/vars";
 
@@ -58,7 +59,7 @@ const Header = () => {
           ".nav_mobile_li",
           {
             // xPercent: -20,
-            yPercent: -200,
+            yPercent: -100,
             autoAlpha: 0,
             duration: vars?.durationSm,
             stagger: vars?.staggerSm,
@@ -82,8 +83,12 @@ const Header = () => {
     window.addEventListener("resize", changeIsMobile);
     gsap.from(headerRef?.current, {
       autoAlpha: 0,
-      duration: vars?.durationMd,
+      duration: vars?.enterAnimationDuration,
     });
+    // gsap.from(`.${styles?.logo}`, {
+    //   yPercent: -50,
+    //   duration: vars?.enterAnimationDuration,
+    // });
 
     return () => window.removeEventListener("resize", changeIsMobile);
   });
@@ -109,16 +114,25 @@ const Header = () => {
 
   return (
     <header className={`${styles.header} hidden`} ref={headerRef}>
-      <div onClick={() => navigate("/#home", router)}>
+      <Image
+        src="/logo.svg"
+        alt="Hamster Logo"
+        className={styles.logo}
+        width={100}
+        height={100}
+        priority
+        onClick={() => navigate("/#home", router)}
+      />
+      {/* <div onClick={() => navigate("/#home", router)}>
         <Image
-          src="/logo.svg"
+          src="/logo_1.svg"
           alt="Hamster Logo"
           className={styles.logo}
           width={100}
           height={100}
           priority
         />
-      </div>
+      </div> */}
       {isMobile ? (
         <IconMenu2 className={styles.burger} onClick={openMenu} />
       ) : (
@@ -134,7 +148,14 @@ const Header = () => {
           <GradientButton
             text="Hire me"
             icon={true}
-            onClick={() => navigate(document.getElementById("contacts") ? "#contacts" : "/#contacts", router)}
+            onClick={() =>
+              navigate(
+                document.getElementById("contacts")
+                  ? "#contacts"
+                  : "/#contacts",
+                router
+              )
+            }
           />
         </nav>
       )}

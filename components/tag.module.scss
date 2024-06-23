@@ -12,25 +12,44 @@
   font-size: $font-size-xs;
   font-weight: $font-weight-md;
   background: $secondary-background-color;
+  // background: $primary-text-color;
+  // color: $primary-background-color;
   //   box-shadow: inset 0px 1px 0px rgba($primary-text-color, 0.1);
   // @include shadowBorder(1px, 0.1);
 
   &.green {
-    // color: black;
-    // background: rgb(226, 255, 246);
+    // @include border($border-width-sm, $cyan-accent-color);
+    // .icon {
+    //   color: $cyan-accent-color;
+    // }
+    .circle {
+      background: $cyan-gradient;
+      box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
+    }
   }
 
   &.red {
-    color: white;
-    background: rgb(255, 85, 85);
+    // color: white;
+    // background: rgb(255, 85, 85);
+    // background: $red;
+    // @include border($border-width-sm, $red)
+    .circle {
+      background: $red;
+      box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
+    }
   }
-}
 
-.circle {
-  display: block;
-  width: $icon-size-xs;
-  height: $icon-size-xs;
-  background: $cyan-gradient;
-  box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
-  border-radius: $border-radius-full;
+  .circle {
+    display: block;
+    width: $icon-size-xs;
+    height: $icon-size-xs;
+    background: $cyan-gradient;
+    box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
+    border-radius: $border-radius-full;
+  }
+
+  // .icon {
+  //   width: $icon-size-xs;
+  //   height: $icon-size-xs;
+  // }
 }

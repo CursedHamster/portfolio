@@ -7,9 +7,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import PrimaryButton from "./PrimaryButton";
 import UnderlineButton from "./UnderlineButton";
 import ArrowButton from "./ArrowButton";
+import Tag from "./Tag";
 import styles from "./contacts.module.scss";
 import vars from "@/data/vars";
-import { IconMichelinStar } from "@tabler/icons-react";
+import { IconCheck, IconMichelinStar } from "@tabler/icons-react";
 
 const Contacts = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -26,7 +27,7 @@ const Contacts = () => {
     ok: "Message sent!",
     error: "Something went wrong",
   };
-  const messageSent = useRef<HTMLDivElement>(null);
+  const [isFormOk, setIsFormOk] = useState(true);
   const [messageSentTimeline, setMessageSentTimeline] =
     useState<GSAPTimeline>();
 
@@ -35,11 +36,11 @@ const Contacts = () => {
       gsap
         .timeline({ paused: true })
         .fromTo(
-          messageSent?.current,
+          `.${styles.message_sent}`,
           { autoAlpha: 0, yPercent: 100, scale: 0.5 },
           { autoAlpha: 1, yPercent: -100, scale: 1, duration: vars?.durationSm }
         )
-        .to(messageSent?.current, {
+        .to(`.${styles.message_sent}`, {
           autoAlpha: 0,
           yPercent: -200,
           delay: vars?.durationLg,
@@ -57,39 +58,48 @@ const Contacts = () => {
       })
       .from(".contacts_title", {
         x: -vars?.offsetSm,
-        yPercent: -vars?.offsetSm,
+        y: -vars?.offsetSm,
         autoAlpha: 0,
         duration: vars?.enterAnimationDuration,
       })
       .from(
+        ".contacts_text",
+        {
+          autoAlpha: 0,
+          y: -(vars?.offsetMd),
+          duration: vars?.enterAnimationDuration,
+        },
+        `<+=${vars?.enterAnimationDuration / 2}`
+      )
+      .from(
         ".contacts_form>*",
         {
           autoAlpha: 0,
-          x: -vars?.offsetSm,
-          y: -vars?.offsetSm,
+          y: -(vars?.offsetMd),
           duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 5,
+          stagger: vars?.enterAnimationDuration / 3,
         },
         `<+=${vars?.enterAnimationDuration / 5}`
       );
   });
 
   function changeMessageType(isOk: boolean) {
-    const currentMessage = messageSent?.current;
-    if (currentMessage) {
+    if (messageSentText) {
       if (isOk) {
-        if (currentMessage.classList?.contains("red")) {
-          currentMessage.classList?.remove("red");
-        }
-        currentMessage.classList?.add("green");
-        currentMessage.innerText = messageText?.ok;
+        // if (currentMessage.classList?.contains("red")) {
+        //   currentMessage.classList?.remove("red");
+        // }
+        // currentMessage.classList?.add("green");
+        // currentMessage.innerText = messageText?.ok;
+        setMessageSentText(messageText?.ok);
       }
       if (!isOk) {
-        if (currentMessage.classList?.contains("green")) {
-          currentMessage.classList?.remove("green");
-        }
-        currentMessage.classList?.add("red");
-        currentMessage.innerText = messageText?.error;
+        // if (currentMessage.classList?.contains("green")) {
+        //   currentMessage.classList?.remove("green");
+        // }
+        // currentMessage.classList?.add("red");
+        // currentMessage.innerText = messageText?.error;
+        setMessageSentText(messageText?.error);
       }
     }
   }
@@ -103,26 +113,30 @@ const Contacts = () => {
     setFormErrors(errors);
     if (!(errors.email || errors.message)) {
       console.log("message sent"); //TODO: remove
-      try {
-        const res = await fetch(`/api/send`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        const data = await res.json();
-        if (!data?.error) {
-          changeMessageType(true);
-        } else {
-          changeMessageType(false);
-        }
-        messageSentTimeline?.restart();
-      } catch (error) {
-        changeMessageType(false);
-        messageSentTimeline?.restart();
-      }
+      setIsFormOk(true);
+      // try {
+      //   const res = await fetch(`/api/send`, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(formData),
+      //   });
+      //   const data = await res.json();
+      //   if (!data?.error) {
+      //     changeMessageType(true);
+      //   } else {
+      //     changeMessageType(false);
+      //   }
+      //   messageSentTimeline?.restart();
+      // } catch (error) {
+      //   changeMessageType(false);
+      //   messageSentTimeline?.restart();
+      // }
+    } else {
+      setIsFormOk(false);
     }
+    messageSentTimeline?.restart();
   }
 
   function handleChange(e: any) {
@@ -159,7 +173,7 @@ const Contacts = () => {
         Want to <span className="extra">contact</span> me?
       </h2>
       <div className={styles.form_container}>
-        <p className={styles.form_text}>
+        <p className={`${styles.form_text} contacts_text hidden`}>
           <IconMichelinStar />
           Please, leave your email and a message saying what are you contacting
           me for. If you wish to contact me in another way - you are free to use
@@ -226,9 +240,15 @@ const Contacts = () => {
           />
         </form>
       </div>
-      <div className={`tag green ${styles.message_sent}`} ref={messageSent}>
+      <Tag
+        text={isFormOk ? messageText?.ok : messageText?.error}
+        className={`${styles.message_sent} hidden`}
+        color={isFormOk ? "green" : "red"}
+        hasIcon
+      />
+      {/* <div className={`tag green ${styles.message_sent} hidden`} ref={messageSent}>
         {messageText?.ok}
-      </div>
+      </div> */}
     </section>
   );
 };

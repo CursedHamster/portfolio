@@ -1,6 +1,7 @@
 export default {
     enterAnimationDuration: 0.5,
     offsetSm: 20,
+    offsetMd: 50,
     durationXs: 0.2,
     durationSm: 0.3,
     durationMd: 0.5,
