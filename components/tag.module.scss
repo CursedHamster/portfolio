@@ -5,6 +5,8 @@
   justify-content: space-between;
   align-items: center;
   gap: $gap-sm;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   color: $primary-text-color;
   padding: $padding-sm $padding-md;
@@ -12,30 +14,16 @@
   font-size: $font-size-xs;
   font-weight: $font-weight-md;
   background: $secondary-background-color;
-  // background: $primary-text-color;
-  // color: $primary-background-color;
-  //   box-shadow: inset 0px 1px 0px rgba($primary-text-color, 0.1);
-  // @include shadowBorder(1px, 0.1);
 
   &.green {
-    // @include border($border-width-sm, $cyan-accent-color);
-    // .icon {
-    //   color: $cyan-accent-color;
-    // }
     .circle {
       background: $cyan-gradient;
-      box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
     }
   }
 
   &.red {
-    // color: white;
-    // background: rgb(255, 85, 85);
-    // background: $red;
-    // @include border($border-width-sm, $red)
     .circle {
       background: $red;
-      box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
     }
   }
 
@@ -43,13 +31,7 @@
     display: block;
     width: $icon-size-xs;
     height: $icon-size-xs;
-    background: $cyan-gradient;
-    box-shadow: inset 0px 1px 0px rgba($primary-text-color, 1);
     border-radius: $border-radius-full;
+    @include shadowBorder();
   }
-
-  // .icon {
-  //   width: $icon-size-xs;
-  //   height: $icon-size-xs;
-  // }
 }

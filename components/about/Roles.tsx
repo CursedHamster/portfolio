@@ -1,12 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import styles from "./roles.module.scss";
-import data from "@/data/data";
 import vars from "@/data/vars";
-import styleVars from "@/app/_vars.module.scss";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
+import styles from "./roles.module.scss";
 
 interface Role {
   title: string;

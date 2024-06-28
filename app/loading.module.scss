@@ -1,10 +1,19 @@
+@import "@/app/_vars.module.scss";
+
 .loading_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100svw;
   height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: $primary-background-color;
   gap: 5rem;
+  z-index: 2000;
 }
 
 .bracket {

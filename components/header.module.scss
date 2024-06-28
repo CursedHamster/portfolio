@@ -17,9 +17,7 @@
 
 .logo {
   cursor: pointer;
-  max-width: $icon-size-lg;
   width: auto;
-  height: auto;
   max-height: $icon-size-lg;
   display: flex;
   justify-content: center;
@@ -131,11 +129,9 @@
   @include border($border-width-sm, $primary-text-color);
 
   svg {
-    /* color: black; */
     stroke-width: $border-width-md;
     width: $icon-size-sm;
     color: $primary-text-color;
-    // stroke-width: 4px;
   }
 }
 
@@ -151,12 +147,6 @@
   .li_icon {
     background: $primary-text-color;
     border-color: transparent;
-    // background-image: linear-gradient(
-    //   104.59deg,
-    //   #ffffff 7.43%,
-    //   #ffa3bf 53.52%,
-    //   #9ffee9 106.89%
-    // );
     background-image: $primary-gradient;
     svg {
       color: $primary-background-color;
@@ -187,26 +177,4 @@
   .nav_mobile_list {
     padding: $padding-md $padding-md;
   }
-}
-
-@media (max-width: $max-width-sm) {
-  .header {
-    // padding: $padding-sm $padding-sm;
-  }
-  .close {
-    // margin-right: $padding-sm;
-  }
-  .nav_mobile_list {
-    // padding: $padding-md $padding-sm;
-  }
-  .li_title {
-    // @include titleText($font-size-lg);
-  }
-  // .li_icon {
-  //   width: $icon-size-md;
-  //   height: $icon-size-md;
-  //   svg {
-  //     width: $icon-size-xs;
-  //   }
-  // }
 }

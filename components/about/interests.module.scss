@@ -59,3 +59,19 @@
     padding: $padding-sm;
   }
 }
+
+@media (max-width: $max-width-sm) {
+  .interests {
+    .active {
+      .arrow {
+        width: $icon-size-lg;
+        &.left:hover {
+          transform: translateX(-2px);
+        }
+        &.right:hover {
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+}

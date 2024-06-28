@@ -1,6 +1,7 @@
 @import "../app/vars.module";
 
 .projects_container {
+  scroll-margin-top: $padding-xl;
   position: relative;
   padding: 0 $padding-xl;
   z-index: 5;
@@ -16,9 +17,6 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  /* border: 2px solid white; */
-  /* background: black; */
-  /* color: white; */
   background: $primary-text-color;
   padding: $padding-sm;
   border-radius: $border-radius-full;
@@ -35,37 +33,25 @@
   pointer-events: none;
   width: 100vw;
   height: 100vh;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .image_container {
   position: relative;
   width: 100%;
   height: 100%;
-  /* max-width: 60vw; */
-  /* max-height: 50vh; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   .image_div {
     position: absolute;
     top: 0;
     left: 0;
-    /* width: 30vw; */
   }
 
   .desktop {
     width: 400px;
     height: auto;
     aspect-ratio: 2538/1283;
+    -o-object-fit: cover;
     object-fit: cover;
-    /* border-radius: 0.5rem;
-    -webkit-border-radius: 0.5rem;
-    -moz-border-radius: 0.5rem;
-    -ms-border-radius: 0.5rem;
-    -o-border-radius: 0.5rem; */
+    border-radius: 0.25rem;
   }
 
   .image_overlay {
@@ -80,57 +66,13 @@
   }
 }
 
-/* .image_container img {
-  object-fit: cover;
-  border-radius: 0.5rem;
-  -webkit-border-radius: 0.5rem;
-  -moz-border-radius: 0.5rem;
-  -ms-border-radius: 0.5rem;
-  -o-border-radius: 0.5rem;
-} */
-
-/* .image_container .tablet {
-  position: absolute;
-  width: 30%;
-  aspect-ratio: 3/4;
-  left: -20%;
-  bottom: -10%;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.12);
-  z-index: 1;
-} */
-
-/* 
-.image_container .phone {
-  position: absolute;
-  width: 20%;
-  aspect-ratio: 9/16;
-  right: -15%;
-  bottom: -10%;
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.12);
-  z-index: 1;
-} */
-
-/* .projects_table {
-  position: relative;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 2rem;
-  margin-top: 1rem;
-  mix-blend-mode: difference;
-} */
-
 .projects_table {
   margin-top: $gap-xl;
   > * {
     transform-origin: bottom center;
     width: 100%;
-    /* margin-top: 2rem; */
   }
 }
-
-/* .project_table {
-  width: 100%;
-} */
 
 .project_row {
   position: relative;
@@ -147,10 +89,6 @@
     z-index: 20;
   }
 }
-
-/* .project_table td {
-  padding: 2rem 0;
-} */
 
 .project_title {
   font-weight: $font-weight-md;
@@ -192,7 +130,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: $primary-text-color;
   z-index: -1;
 }
 
@@ -215,5 +153,11 @@
   }
   .project_role {
     display: none;
+  }
+  .image_container {
+    .desktop {
+      width: 200px;
+      aspect-ratio: 2538/1283;
+    }
   }
 }

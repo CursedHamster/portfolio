@@ -1,10 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
-import GradientBackground from "./GradientBackground";
+import { useRef } from "react";
 import styles from "./draggableLetters.module.scss";
 
 const DraggableLetters = ({
@@ -13,6 +12,7 @@ const DraggableLetters = ({
   params: {
     id: string;
     svg: { viewBox: string; text: string[] };
+    className?: string | "";
   };
 }) => {
   gsap.registerPlugin(useGSAP, Draggable);
@@ -39,7 +39,26 @@ const DraggableLetters = ({
   });
 
   return (
-    <GradientBackground className={styles.drag_container}>
+    <div className={`${styles.drag_container} ${params?.className}`}>
+      <div
+        className={`${styles.circle} ${styles.circle_border} ${styles.circle_3}`}
+      ></div>
+      <div
+        className={`${styles.circle} ${styles.circle_border} ${styles.circle_4}`}
+      ></div>
+      <div
+        className={`${styles.circle} ${styles.circle_border} ${styles.circle_5}`}
+      ></div>
+      <div
+        className={`${styles.circle} ${styles.circle_border} ${styles.circle_6}`}
+      ></div>
+
+      <div
+        className={`${styles.circle} ${styles.circle_filled} ${styles.circle_1}`}
+      ></div>
+      <div
+        className={`${styles.circle} ${styles.circle_filled} ${styles.circle_2}`}
+      ></div>
       <div className={styles.drag_frame} ref={containerRef}>
         <svg
           viewBox={params?.svg?.viewBox}
@@ -47,16 +66,18 @@ const DraggableLetters = ({
           className={styles.drag_text}
         >
           {params?.svg?.text?.map((svgLetter, i) => (
-            <path
-              id={createLetterId(i)}
-              key={createLetterId(i)}
-              d={svgLetter}
-              vectorEffect="non-scaling-stroke"
-            />
+            <g id={createLetterId(i)} key={createLetterId(i)}>
+              <path
+                className={styles.path_copy}
+                d={svgLetter}
+                vectorEffect="non-scaling-stroke"
+              />
+              <path d={svgLetter} vectorEffect="non-scaling-stroke" />
+            </g>
           ))}
         </svg>
       </div>
-    </GradientBackground>
+    </div>
   );
 };
 

@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useRef } from "react";
 import styles from "./parallaxImages.module.scss";
 
 const ParallaxImages = (params: {
@@ -50,10 +51,16 @@ const ParallaxImages = (params: {
       <div className={styles.parallax}>
         {params?.images?.map((image, i) => {
           const getImgObject = (img: string) => (
-            <img
+            <Image
               src={img}
               alt={`Phone screenshot of ${params?.title}`}
               className={styles.parallax_image}
+              width={1284}
+              height={2781}
+              quality={65}
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />
           );
 

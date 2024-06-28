@@ -12,7 +12,7 @@ import {
   IconStarFilled,
 } from "@tabler/icons-react";
 import PrimaryButton from "./PrimaryButton";
-import UnderlineButton from "./UnderlineButton";
+import SecondaryButton from "./SecondaryButton";
 import GradientBackground from "./GradientBackground";
 import StudioScreen from "./StudioScreen";
 import IconLink from "./IconLink";
@@ -25,182 +25,138 @@ import vars from "@/data/vars";
 const Hero = () => {
   gsap.registerPlugin(useGSAP);
 
-  const { contextSafe } = useGSAP();
-
   useGSAP(() => {
-    gsap
-      .timeline()
-      .from(".hero_tag", {
-        // xPercent: -50,
-        // y: -vars?.offsetSm,
-        autoAlpha: 0,
-        duration: vars?.enterAnimationDuration,
-      })
-      .from(
-        ".hero_title",
-        {
-          // xPercent: -50,
-          // y: -vars?.offsetSm,
-          yPercent: 100,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        // `<+=${vars?.enterAnimationDuration / 5}`
-        "<"
-      )
-      .from(
-        ".hero_subtitle",
-        {
-          xPercent: -50,
-          // y: -vars?.offsetSm,
-          yPercent: 100,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        `<+=${vars?.enterAnimationDuration / 3}`
-      )
-      .from(
-        ".hero_buttons",
-        {
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        `<+=${vars?.enterAnimationDuration / 3}`
-      )
-      .from(
-        ".hero_buttons>*",
-        {
-          xPercent: -50,
-          // y: -vars?.offsetSm,
-          duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 3,
-        },
-        "<"
-      )
-      // .from(
-      //   ".figure",
-      //   {
-      //     yPercent: -50,
-      //     autoAlpha: 0,
-      //     duration: vars?.enterAnimationDuration,
-      //   },
-      //   `<`
-      // )
-      // .from(
-      //   ".hero_socials",
-      //   {
-      //     autoAlpha: 0,
-      //     duration: vars?.enterAnimationDuration,
-      //   },
-      //   `<+=${vars?.enterAnimationDuration / 5}`
-      // )
-      .from(
-        ".hero_image",
-        {
-          scale: 0,
-          rotate: -180,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration * 1.5,
-        },
-        `>-=${vars?.enterAnimationDuration}`
-      )
-      .from(
-        ".hero_circle_shadow",
-        {
-          x: vars?.offsetSm,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        `>-=${vars?.enterAnimationDuration / 5}`
-      )
-      .from(
-        ".hero_socials>*",
-        {
-          yPercent: -100,
-          // scale: 0,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 2,
-        },
-        `<+=${vars?.enterAnimationDuration / 3}`
-      )
-      .from(
-        ".hero_studio",
-        {
-          xPercent: 100,
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        `<+=${vars?.enterAnimationDuration / 3}`
-      )
-      .from(
-        ".hero_icons",
-        {
-          autoAlpha: 0,
-          duration: vars?.enterAnimationDuration,
-        },
-        `<+=${vars?.enterAnimationDuration / 3}`
-      )
-      .from(
-        ".hero_icons>*",
-        {
-          scale: 0,
-          rotation: 0,
-          duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 5,
-        },
-        `<`
-      )
-      ;
-    // .from(
-    //   ".hero_scroll_down",
-    //   {
-    //     y: vars?.offsetSm,
-    //     autoAlpha: 0,
-    //     duration: vars?.enterAnimationDuration,
-    //   },
-    //   `<+=${vars?.enterAnimationDuration / 5}`
-    // );
-    // gsap.to(".mouse", {
-    //   y: -vars?.offsetSm,
-    //   autoAlpha: 0,
-    //   duration: vars?.enterAnimationDuration,
-    //   repeat: -1,
-    // });
-  });
+    const mm = gsap.matchMedia();
+    mm.add(
+      {
+        small: `(max-width: ${styleVars?.screenSmall})`,
+        medium: `(min-width: ${styleVars?.screenMedium})`,
+        large: `(min-width: ${styleVars?.screenLarge})`,
+      },
+      (ctx) => {
+        const { small, medium, large }: any = ctx.conditions;
+        const heroTimeline = gsap.timeline();
 
-  const animationOnMouseEnter = contextSafe(() => {
-    gsap.to(".petal_1", { scale: 1, duration: vars?.durationMd });
-    gsap.to(".circle_1", {
-      scale: 0.5,
-      autoAlpha: 0,
-      duration: vars?.durationMd,
-    });
-    gsap.to(".petal_2", { scale: 0.7, duration: vars?.durationMd });
-    gsap.to(".circle_2", {
-      scale: 1,
-      autoAlpha: 1,
-      duration: vars?.durationMd,
-    });
-    gsap.to(".like", { scale: 0.9, duration: vars?.durationMd });
-    // gsap.to(".like_ring", { scale: 1.4, duration: vars?.durationMd });
-  });
-
-  const animationOnMouseLeave = contextSafe(() => {
-    gsap.to(".petal_1", { scale: 0.7, duration: vars?.durationMd });
-    gsap.to(".circle_1", {
-      scale: 1,
-      autoAlpha: 1,
-      duration: vars?.durationMd,
-    });
-    gsap.to(".petal_2", { scale: 1, duration: vars?.durationMd });
-    gsap.to(".circle_2", {
-      scale: 0.5,
-      autoAlpha: 0,
-      duration: vars?.durationMd,
-    });
-    gsap.to(".like", { scale: 1, duration: vars?.durationMd });
-    // gsap.to(".like_ring", { scale: 1.5, duration: vars?.durationMd });
+        heroTimeline
+          ?.from(".hero_tag", {
+            autoAlpha: 0,
+            duration: vars?.enterAnimationDuration,
+          })
+          .from(
+            ".hero_title",
+            {
+              yPercent: 100,
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration,
+            },
+            "<"
+          )
+          .from(
+            ".hero_subtitle",
+            {
+              xPercent: -50,
+              yPercent: 100,
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration,
+            },
+            `<+=${vars?.enterAnimationDuration / 3}`
+          )
+          .from(
+            ".hero_buttons",
+            {
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration,
+            },
+            `<+=${vars?.enterAnimationDuration / 3}`
+          )
+          .from(
+            ".hero_buttons>*",
+            {
+              xPercent: -50,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 3,
+            },
+            "<"
+          );
+        if (small || (medium && !large)) {
+          heroTimeline?.from(
+            ".hero_socials>*",
+            {
+              yPercent: -100,
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 2,
+            },
+            medium
+              ? `<+=${vars?.enterAnimationDuration / 3}`
+              : `<+=${vars?.enterAnimationDuration}`
+          );
+        }
+        if (medium || large) {
+          heroTimeline
+            ?.from(
+              ".hero_image",
+              {
+                scale: 0,
+                rotate: -180,
+                autoAlpha: 0,
+                duration: vars?.enterAnimationDuration * 1.5,
+              },
+              `>-=${vars?.enterAnimationDuration}`
+            )
+            .from(
+              ".hero_circle_shadow",
+              {
+                x: vars?.offsetSm,
+                autoAlpha: 0,
+                duration: vars?.enterAnimationDuration,
+              },
+              `>-=${vars?.enterAnimationDuration / 5}`
+            );
+        }
+        if (large)
+          heroTimeline?.from(
+            ".hero_socials>*",
+            {
+              yPercent: -100,
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 2,
+            },
+            `<+=${vars?.enterAnimationDuration / 3}`
+          );
+        if (medium || large) {
+          heroTimeline
+            ?.from(
+              ".hero_icons",
+              {
+                autoAlpha: 0,
+                duration: vars?.enterAnimationDuration,
+              },
+              `<+=${vars?.enterAnimationDuration / 3}`
+            )
+            .from(
+              ".hero_icons>*",
+              {
+                scale: 0,
+                rotation: 0,
+                duration: vars?.enterAnimationDuration,
+                stagger: vars?.enterAnimationDuration / 5,
+              },
+              `<`
+            )
+            .from(
+              ".hero_studio",
+              {
+                xPercent: 100,
+                autoAlpha: 0,
+                duration: vars?.enterAnimationDuration,
+              },
+              `<+=${vars?.enterAnimationDuration}`
+            );
+        }
+      }
+    );
   });
 
   return (
@@ -221,7 +177,7 @@ const Hero = () => {
         </div>
         <div className={`${styles.buttons} hidden hero_buttons`}>
           <PrimaryButton text="Contact me" />
-          <UnderlineButton text="See my work" icon={true} />
+          <SecondaryButton text="See my work" icon={true} />
         </div>
       </div>
       <div className={`${styles.figure}`}>
@@ -245,21 +201,6 @@ const Hero = () => {
             <div
               className={`${styles.circle_shadow} hero_circle_shadow hidden`}
             ></div>
-            {/* <div className={`${styles.socials}`}>
-              {data?.socials?.map((social, i) => (
-                <IconLink
-                  key={`hero_social_${i + 1}`}
-                  icon={social?.icon}
-                  link={social?.link}
-                />
-              ))}
-            </div> */}
-            {/* <Tag
-              text="Available"
-              color="green"
-              className={`${styles.tag} hero_tag`}
-              hasIcon
-            /> */}
             <div className={`${styles.icons} hero_icons hidden`}>
               <svg
                 className={`${styles.icon} ${styles.icon_1}`}
@@ -376,57 +317,7 @@ const Hero = () => {
           activeIndex={1}
           className={`${styles.studio} hero_studio hidden`}
         />
-        {/* <div className={styles.qualities}>
-          {data?.hero?.qualities?.map((quality, i) => (
-            <div key={`hero_quality_${i + 1}`} className={`${styles.quality}`}>
-              <div className={styles.icon}>
-                <IconNorthStar />
-              </div>
-              <div className={styles.quality_container}>{quality}</div>
-            </div>
-          ))}
-        </div> */}
       </div>
-      {/* <div
-        className={`${styles.figure} hidden figure`}
-        onMouseEnter={animationOnMouseEnter}
-        onMouseLeave={animationOnMouseLeave}
-      >
-        <div className={`${styles.petal} ${styles.petal_t_l} petal_1`}></div>
-        <div className={`${styles.petal} ${styles.petal_t_r} petal_2`}></div>
-        <div className={`${styles.petal} ${styles.petal_b_l} petal_2`}></div>
-        <div className={`${styles.petal} ${styles.petal_b_r} petal_1`}></div>
-        <div className={`${styles.circle} ${styles.circle_t_l} circle_1`}></div>
-        <div className={`${styles.circle} ${styles.circle_b_r} circle_1`}></div>
-        <div className={`${styles.circle} ${styles.circle_b_l} circle_2`}></div>
-        <div className={`${styles.circle} ${styles.circle_t_r} circle_2`}></div>
-        <div className={styles.like}>
-          <div className={`${styles.like_relative}`}>
-            <IconHeartFilled
-              // fill="url(#pink_gradient)"
-              className="like"
-            />
-            <div className={styles.like_shadow}></div>
-          </div>
-        </div>
-      </div> */}
-      {/* <div className={styles.right_panel}>
-        <div className={`${styles.socials} hidden hero_socials`}>
-          {data?.socials?.map((social, i) => (
-            <IconLink
-              key={`hero_socials_${i + 1}`}
-              icon={social?.icon}
-              link={social?.link}
-            />
-          ))}
-        </div>
-        <div className={`${styles.scroll_down} hidden hero_scroll_down`}>
-          <div className={styles.scroll_icon}>
-            <IconMouseFilled />
-          </div>
-          <p>Scroll to explore</p>
-        </div>
-      </div> */}
     </section>
   );
 };

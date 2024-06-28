@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import styles from "./gradientBackground.module.scss";
 import styleVars from "@/app/_vars.module.scss";
 import vars from "@/data/vars";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useState } from "react";
+import { isMobile } from "react-device-detect";
+import styles from "./gradientBackground.module.scss";
 
 const GradientBackground = (props: any) => {
   const ComponentType = props.type ? props.type : "div";
@@ -56,8 +57,8 @@ const GradientBackground = (props: any) => {
   return (
     <ComponentType
       className={`${styles.container} ${props.className}`}
-      onMouseEnter={gradientOnMouseEnter}
-      onMouseLeave={gradientOnMouseLeave}
+      onMouseEnter={isMobile ? undefined : gradientOnMouseEnter}
+      onMouseLeave={isMobile ? undefined : gradientOnMouseLeave}
       onClick={props.onClick}
     >
       {props.children}

@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
+import vars from "@/data/vars";
 import { useGSAP } from "@gsap/react";
 import { IconCaretLeftFilled, IconCaretRightFilled } from "@tabler/icons-react";
+import gsap from "gsap";
+import { useEffect, useState } from "react";
 import styles from "./interests.module.scss";
-import data from "@/data/data";
-import vars from "@/data/vars";
-import styleVars from "@/app/_vars.module.scss";
 
 interface Interest {
   name: string;

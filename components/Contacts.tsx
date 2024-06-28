@@ -1,24 +1,24 @@
 "use client";
 
-import { useState, useRef } from "react";
-import gsap from "gsap";
+import vars from "@/data/vars";
+import titleAnimate from "@/util/titleAnimate";
 import { useGSAP } from "@gsap/react";
+import { IconMichelinStar } from "@tabler/icons-react";
+import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useState } from "react";
 import PrimaryButton from "./PrimaryButton";
-import UnderlineButton from "./UnderlineButton";
-import ArrowButton from "./ArrowButton";
 import Tag from "./Tag";
 import styles from "./contacts.module.scss";
-import vars from "@/data/vars";
-import { IconCheck, IconMichelinStar } from "@tabler/icons-react";
 
 const Contacts = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-  const [formData, setFormData] = useState({
+  const emptyFormData = {
     email: "",
     message: "",
-  });
+  };
+  const [formData, setFormData] = useState(emptyFormData);
   const [formErrors, setFormErrors] = useState({
     email: false,
     message: false,
@@ -53,20 +53,15 @@ const Contacts = () => {
           trigger: "#contacts",
           start: "top bottom",
           end: "bottom bottom",
-          toggleActions: "restart none none reverse",
+          toggleActions: "play none none none",
         },
       })
-      .from(".contacts_title", {
-        x: -vars?.offsetSm,
-        y: -vars?.offsetSm,
-        autoAlpha: 0,
-        duration: vars?.enterAnimationDuration,
-      })
+      .add(titleAnimate(".contacts_title"))
       .from(
         ".contacts_text",
         {
           autoAlpha: 0,
-          y: -(vars?.offsetMd),
+          y: -vars?.offsetMd,
           duration: vars?.enterAnimationDuration,
         },
         `<+=${vars?.enterAnimationDuration / 2}`
@@ -75,34 +70,13 @@ const Contacts = () => {
         ".contacts_form>*",
         {
           autoAlpha: 0,
-          y: -(vars?.offsetMd),
+          y: -vars?.offsetMd,
           duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 3,
+          stagger: vars?.enterAnimationDuration / 5,
         },
-        `<+=${vars?.enterAnimationDuration / 5}`
+        `<`
       );
   });
-
-  function changeMessageType(isOk: boolean) {
-    if (messageSentText) {
-      if (isOk) {
-        // if (currentMessage.classList?.contains("red")) {
-        //   currentMessage.classList?.remove("red");
-        // }
-        // currentMessage.classList?.add("green");
-        // currentMessage.innerText = messageText?.ok;
-        setMessageSentText(messageText?.ok);
-      }
-      if (!isOk) {
-        // if (currentMessage.classList?.contains("green")) {
-        //   currentMessage.classList?.remove("green");
-        // }
-        // currentMessage.classList?.add("red");
-        // currentMessage.innerText = messageText?.error;
-        setMessageSentText(messageText?.error);
-      }
-    }
-  }
 
   async function handleSubmit(e: any) {
     e?.preventDefault();
@@ -125,6 +99,7 @@ const Contacts = () => {
       //   const data = await res.json();
       //   if (!data?.error) {
       //     changeMessageType(true);
+      //     setFormData(emptyFormData)
       //   } else {
       //     changeMessageType(false);
       //   }
@@ -222,17 +197,6 @@ const Contacts = () => {
               onBlur={handleBlur}
             ></textarea>
           </div>
-          {/* <ArrowButton
-          text="Send"
-          direction="right"
-          type="click"
-          className={`${styles.contacts_form_button} hidden contacts_form_button`}
-        /> */}
-          {/* <UnderlineButton
-            text="Send"
-            icon={true}
-            className={`${styles.contacts_form_button} hidden contacts_form_button`}
-          /> */}
           <PrimaryButton
             text="Send"
             icon={true}
@@ -246,9 +210,6 @@ const Contacts = () => {
         color={isFormOk ? "green" : "red"}
         hasIcon
       />
-      {/* <div className={`tag green ${styles.message_sent} hidden`} ref={messageSent}>
-        {messageText?.ok}
-      </div> */}
     </section>
   );
 };

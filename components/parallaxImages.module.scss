@@ -5,6 +5,8 @@
   height: 90svh;
   overflow: hidden;
   border-radius: $border-radius-md;
+  background: $primary-background-color;
+  @include border($border-width-sm, $secondary-background-color);
 }
 
 .parallax {
@@ -31,6 +33,7 @@
 
 .parallax_image {
   width: 25vw;
+  height: auto;
   border-radius: $border-radius-md;
 }
 
@@ -40,13 +43,29 @@
   }
 
   .parallax {
+    top: -5svh;
+    left: -15vw;
     gap: $gap-md;
   }
   .parallax_group {
     gap: $gap-md;
   }
   .parallax_image {
-    height: 40vh;
+    width: 30vw;
+  }
+}
+
+@media (max-width: $max-width-sm) {
+  .parallax {
+    top: -5svh;
+    left: -15vw;
+    gap: $gap-md;
+  }
+  .parallax_group {
+    gap: $gap-md;
+  }
+  .parallax_image {
     width: auto;
+    height: 40svh;
   }
 }

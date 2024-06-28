@@ -1,6 +1,7 @@
 @import "../app/vars.module";
 
 .contacts_container {
+  scroll-margin-top: $padding-xl;
   padding: 0 $padding-xl;
 }
 
@@ -28,11 +29,6 @@
 
 .contacts_form {
   flex: 50%;
-  // display: grid;
-  // grid-template-rows: auto 1fr;
-  // grid-template-columns: 1fr auto;
-  // row-gap: $gap-lg;
-  // column-gap: $gap-lg;
   display: flex;
   flex-direction: column;
   gap: $gap-lg;
@@ -92,10 +88,6 @@
   }
 }
 
-.message {
-  // order: 3;
-}
-
 .message .form_input {
   min-height: 10rem;
   height: 10rem;
@@ -104,35 +96,11 @@
   box-sizing: border-box;
 }
 
-// .contacts_form_button {
-//   padding: $padding-sm $padding-lg;
-//   font-size: $font-size-lg;
-//   order: 2;
-//   height: fit-content;
-//   align-self: flex-end;
-// }
-
 .contacts_form_button {
   padding-left: $padding-md;
   padding-right: $padding-md;
-  // font-size: $font-size-lg;
-  // order: 2;
-  // height: fit-content;
-  // align-self: flex-end;
   font-size: $font-size-md;
 }
-
-/* .send_button {
-  align-self: flex-end;
-  height: fit-content;
-  cursor: pointer;
-  color: black;
-  background: rgb(249, 249, 249);
-  border: 2px solid palevioletred;
-  padding: 1rem 5rem;
-  grid-row: 1/2;
-  grid-column: 2/3;
-} */
 
 .message_sent {
   position: fixed;
@@ -140,6 +108,7 @@
   right: 0;
   bottom: $padding-md;
   margin: 0 auto;
+  z-index: 2000;
 }
 
 @media (max-width: $max-width-lg) {
@@ -165,29 +134,13 @@
   .contacts_form {
     flex: 100%;
   }
-  // .contacts_form {
-  //   row-gap: $gap-xl;
-  //   column-gap: 0;
-  // }
-  // .contacts_form_button {
-  //   order: 3;
-  //   font-size: $font-size-md;
-  // }
-  // .message {
-  //   order: 2;
-  // }
 }
 
 @media (max-width: $max-width-sm) {
+  .form_container {
+    margin-top: $gap-xl;
+  }
   .form_text {
     text-align: justify;
-    // svg {
-    //   position: absolute;
-    //   width: $icon-size-xxl * 2;
-    //   z-index: -1;
-    //   opacity: 0.1;
-    //   top: -($icon-size-xxl);
-    //   left: -($icon-size-xxl) / 1.2;
-    // }
   }
 }

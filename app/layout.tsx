@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Temporarily modified by CursedHamster",
+  title: "V.Harniuk. Portfolio",
+  description: "Created by CursedHamster",
 };
 
 export default function RootLayout({
@@ -26,7 +26,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        {/* <div className="background_gradient"></div> */}
+        <div className="background_gradient background_gradient_1"></div>
+        <div className="background_gradient background_gradient_2"></div>
       </body>
     </html>
   );

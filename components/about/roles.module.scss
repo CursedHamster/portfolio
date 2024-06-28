@@ -1,10 +1,8 @@
 @import "@/app/vars.module";
 
-
 .roles_container {
   grid-area: roles;
   justify-content: center;
-  // grid-area: 2 / 1 / 5 / 3;
 }
 
 .roles {
@@ -27,6 +25,8 @@
     transform-style: preserve-3d;
     position: absolute;
     width: calc(100% - ($padding-md) * 2);
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     top: 0;
     left: 0;
@@ -64,7 +64,6 @@
 @media (max-width: $max-width-sm) {
   .roles {
     .role {
-      // width: calc(100% - $padding-lg);
       font-size: $font-size-sm;
     }
   }

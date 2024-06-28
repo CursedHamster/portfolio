@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { IconArrowNarrowRight } from "@tabler/icons-react";
-import navigate from "@/util/navigate";
-import styles from "./projects.module.scss";
-import data from "../data/data";
 import vars from "@/data/vars";
+import navigate from "@/util/navigate";
+import titleAnimate from "@/util/titleAnimate";
+import { useGSAP } from "@gsap/react";
+import { IconArrowNarrowRight } from "@tabler/icons-react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
+import data from "../data/data";
+import styles from "./projects.module.scss";
 
 const Projects = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -19,9 +21,6 @@ const Projects = () => {
   const cursorText = useRef(null);
   const cursorImage = useRef(null);
   const imageContainer = useRef<HTMLDivElement>(null);
-  // const cursorTablet = useRef(null);
-  // const cursorDesktop = useRef(null);
-  // const cursorPhone = useRef(null);
   const [imageUrls, setImageUrls] = useState<any[]>([]);
   const [currentImage, setCurrentImage] = useState(0);
   const [zIndex, setZIndex] = useState(0);
@@ -31,6 +30,7 @@ const Projects = () => {
     Math.abs(cursorXY?.x - newX) >= cursorDifference ||
     Math.abs(cursorXY?.y - newY) >= cursorDifference;
   const { contextSafe } = useGSAP();
+
   const projectHoverAnimation = contextSafe(
     (el: any, x: number, y: number, zIndex: number) => {
       const image = document?.querySelector(".projects_image");
@@ -78,15 +78,11 @@ const Projects = () => {
           trigger: "#projects",
           start: "top bottom",
           end: "bottom bottom",
-          toggleActions: "restart none none none",
+          toggleActions: "play none none none",
         },
       })
-      .from(".projects_title", {
-        autoAlpha: 0,
-        x: -vars?.offsetSm,
-        yPercent: -vars?.offsetSm,
-        duration: vars?.enterAnimationDuration,
-      })
+
+      .add(titleAnimate(".projects_title"))
       .from(
         ".projects_table>*",
         {
@@ -112,20 +108,6 @@ const Projects = () => {
       yTo(e?.clientY);
     };
 
-    // const setCursorImagesXY = (e: any) => {
-    //   const offsetX = innerWidth / 2 - e?.clientX;
-    //   const offsetY = innerHeight / 2 - e?.clientY;
-    //   gsap.to(cursorDesktop.current, {
-    //     x: offsetX * -0.5,
-    //     y: offsetY * -0.5,
-    //   });
-    // };
-
-    // const onMouseMove = (e: any) => {
-    //   setXY(e);
-    //   setCursorImagesXY(e);
-    // };
-
     window.addEventListener("mousemove", setXY);
     return () => window.removeEventListener("mousemove", setXY);
   });
@@ -150,15 +132,15 @@ const Projects = () => {
       autoAlpha: 0,
       duration: vars?.durationMd,
     });
-    gsap.to(".projects_cursor_image", {
-      autoAlpha: 0,
-      duration: vars?.durationMd,
-    });
   });
 
   const projectMouseEnter = contextSafe((e: any, imgUrls: string[]) => {
-    setImageUrls(imgUrls);
     const element = e?.currentTarget;
+    if (!element.classList.contains("main_opacity_full")) {
+      element.classList.add("main_opacity_full");
+    }
+    gsap.to(".main_opacity", { autoAlpha: 0.3, duration: vars?.durationMd });
+    setImageUrls(imgUrls);
     const childElement = gsap.utils.selector(element);
     gsap.to(element, { y: -vars?.offsetSm / 4, duration: vars?.durationMd });
     gsap.to(element.querySelector("svg"), {
@@ -169,18 +151,10 @@ const Projects = () => {
       height: vars?.offsetSm / 4,
       duration: vars?.durationMd,
     });
-    if (!element.classList.contains("main_opacity_full")) {
-      element.classList.add("main_opacity_full");
-    }
-    gsap.to(".main_opacity", { autoAlpha: 0.3, duration: vars?.durationMd });
     gsap.to(cursorText.current, {
       autoAlpha: 1,
       duration: 0.5,
     });
-    // gsap.to(cursorImage.current, {
-    //   autoAlpha: 1,
-    //   duration: 0.5,
-    // });
   });
 
   const projectMouseMove = contextSafe((e: any) => {
@@ -207,6 +181,10 @@ const Projects = () => {
 
   const projectMouseLeave = contextSafe((e: any) => {
     const element = e?.currentTarget;
+    if (element.classList.contains("main_opacity_full")) {
+      element.classList.remove("main_opacity_full");
+    }
+    gsap.to(".main_opacity", { autoAlpha: 1, duration: vars?.durationMd });
     const childElement = gsap.utils.selector(element);
     gsap.to(element, { y: 0, duration: vars?.durationMd });
     gsap.to(element.querySelector("svg"), {
@@ -217,22 +195,10 @@ const Projects = () => {
       height: 1,
       duration: vars?.durationMd,
     });
-    if (element.classList.contains("main_opacity_full")) {
-      element.classList.remove("main_opacity_full");
-    }
-    gsap.to(".main_opacity", { autoAlpha: 1, duration: vars?.durationMd });
     gsap.to(cursorText.current, {
       autoAlpha: 0,
       duration: 0.5,
     });
-    // gsap.to(cursorImage.current, {
-    //   autoAlpha: 0,
-    //   duration: 0.5,
-    // });
-    // gsap.to(".projects_cursor_image", {
-    //   autoAlpha: 0,
-    //   duration: 0.3,
-    // });
   });
 
   const projectClick = contextSafe((e: any, section: string) => {
@@ -252,18 +218,20 @@ const Projects = () => {
       </h2>
       <div
         className={`${styles.projects_table} projects_table`}
-        onMouseEnter={projectsTableMouseEnter}
-        onMouseLeave={projectsTableMouseLeave}
+        onMouseEnter={isMobile ? undefined : projectsTableMouseEnter}
+        onMouseLeave={isMobile ? undefined : projectsTableMouseLeave}
       >
         {data?.projects?.map((project, i) => (
           <div
             className={`${styles.project_row} main_opacity hidden`}
             key={`project_row_${i}`}
-            onMouseEnter={(e) =>
-              projectMouseEnter(e, project?.images?.screenshots)
+            onMouseEnter={
+              isMobile
+                ? undefined
+                : (e) => projectMouseEnter(e, project?.images?.screenshots)
             }
-            onMouseMove={projectMouseMove}
-            onMouseLeave={projectMouseLeave}
+            onMouseMove={isMobile ? undefined : projectMouseMove}
+            onMouseLeave={isMobile ? undefined : projectMouseLeave}
             onClick={(e) => projectClick(e, project?.id)}
           >
             <div className={styles.project_title}>{project?.title}</div>
@@ -297,24 +265,6 @@ const Projects = () => {
               <div className={styles.image_overlay}></div>
             </div>
           ))}
-          {/* <img
-            src={(imageUrls?.length && imageUrls[0]) || ""}
-            alt="Project thumbnail - Tablet"
-            className={styles.tablet}
-            ref={cursorTablet}
-          /> */}
-          {/* <img
-            src={(imageUrls?.length && imageUrls[1]) || ""}
-            alt="Project thumbnail - Desktop"
-            className={styles.desktop}
-            // ref={cursorDesktop}
-          /> */}
-          {/* <img
-            src={(imageUrls?.length && imageUrls[2]) || ""}
-            alt="Project thumbnail - Phone"
-            className={styles.phone}
-            ref={cursorPhone}
-          /> */}
         </div>
       </div>
     </section>

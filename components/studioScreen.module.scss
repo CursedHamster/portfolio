@@ -1,21 +1,23 @@
 @import "@/app/_vars.module.scss";
 
-$react_color: rgb(130, 179, 243);
-$sass_color: $dark-pink-accent-color;
 $color_1: $dark-pink-accent-color;
 $color_2: rgb(255, 218, 133);
 $color_3: rgb(227, 192, 255);
 $color_4: $pink-accent-color;
+$color_5: rgb(130, 179, 243);
+
+$react_color: $color_5;
+$sass_color: $color_1;
+
 $studio-icon-size-sm: 1.5em;
 $studio-icon-size-md: 2em;
 $studio-icon-size-xl: 3.5em;
 $studio-gap-sm: 0.5em;
 $studio-gap-md: 1em;
 
-
 .studio_container {
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
   display: flex;
   flex-direction: column;
   aspect-ratio: 5/3;
@@ -110,12 +112,10 @@ $studio-gap-md: 1em;
   flex: 70%;
   display: flex;
   flex-direction: column;
-  // height: 100%;
-  // min-height: fit-content;
 }
 
 .code_container {
-  padding: $padding-md $padding-sm;
+  padding: $padding-sm $padding-sm;
   flex: 1;
   overflow-y: auto;
   .tab {
@@ -132,5 +132,8 @@ $studio-gap-md: 1em;
   }
   .color_4 {
     color: $color_4;
+  }
+  .color_5 {
+    color: $react_color;
   }
 }

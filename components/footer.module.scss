@@ -2,6 +2,8 @@
 
 .footer {
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   visibility: hidden;
   padding: $padding-md $padding-xl;
@@ -35,7 +37,6 @@
 
 @media (max-width: $max-width-sm) {
   .footer {
-    // padding: $padding-md $padding-sm;
     flex-direction: column-reverse;
   }
   .copyright {

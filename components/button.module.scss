@@ -12,8 +12,9 @@
   line-height: 1.5;
   z-index: 0;
 
-  // @include border($border-width-sm, transparent);
   svg {
+    height: $icon-size-sm;
+    width: auto;
     stroke-width: $border-width-md;
   }
 }
@@ -22,7 +23,6 @@
   overflow: hidden;
   color: $primary-background-color;
   background: $primary-text-color;
-  // box-shadow: 0px 5px 10px rgba($pink-accent-color, 0.4);
   border-radius: $border-radius-lg;
   -webkit-border-radius: $border-radius-lg;
   -moz-border-radius: $border-radius-lg;
@@ -30,7 +30,6 @@
   -o-border-radius: $border-radius-lg;
 
   .text_original {
-    // visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +46,6 @@
     left: 0;
     right: 0;
     margin: auto;
-    // transform: translateY(100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,85 +53,18 @@
     transform-style: preserve-3d;
     transform: translateY(100%) rotateX(70deg);
   }
-
-  .primary_background {
-    // visibility: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // background-image: $primary-gradient;
-    background: $pink-accent-color;
-    transform-origin: left center;
-    // transform: scaleX(0);
-    transform: translateX(-100%);
-    z-index: -1;
-    /*transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    */
-    border-radius: $border-radius-lg;
-    -webkit-border-radius: $border-radius-lg;
-    -moz-border-radius: $border-radius-lg;
-    -ms-border-radius: $border-radius-lg;
-    -o-border-radius: $border-radius-lg;
-    &_1 {
-      opacity: 0.1;
-    }
-    &_2 {
-      opacity: 0.3;
-    }
-    &_3 {
-      opacity: 0.6;
-    }
-  }
 }
 
-.underline {
+.secondary {
   padding: $padding-sm $padding-sm;
-  // padding: $padding-sm $padding-md;
   font-weight: $font-weight-sm;
-  // background: $secondary-background-color;
-  // border-radius: $border-radius-lg;
-  // overflow: hidden;
-  // @include border($border-width-sm, $secondary-background-color);
   svg {
     stroke-width: $border-width-sm;
   }
-  .underline_background {
-    visibility: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $secondary-background-color;
-    border-radius: $border-radius-lg;
-    z-index: -1;
-  }
-}
-
-.line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: $border-width-md;
-  background: $primary-text-color;
-  background-image: $primary-gradient;
 }
 
 .gradient {
   color: $primary-background-color;
-  // background-image: $primary-gradient;
   border-radius: $border-radius-lg;
   -webkit-border-radius: $border-radius-lg;
   -moz-border-radius: $border-radius-lg;

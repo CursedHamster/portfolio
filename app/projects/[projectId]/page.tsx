@@ -1,21 +1,19 @@
 "use client";
 
-import { useRouter, notFound } from "next/navigation";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import {
-  IconArrowNarrowRight,
-  IconArrowNarrowDown,
-} from "@tabler/icons-react";
-import styles from "./page.module.scss";
-import ParallaxImages from "@/components/ParallaxImages";
-import DraggableLetters from "@/components/DraggableLetters";
+import styleVars from "@/app/_vars.module.scss";
 import ArrowButton from "@/components/ArrowButton";
 import Contacts from "@/components/Contacts";
+import DraggableLetters from "@/components/DraggableLetters";
+import ParallaxImages from "@/components/ParallaxImages";
 import data from "@/data/data";
 import vars from "@/data/vars";
-import navigate from "@/util/navigate";
+import { useGSAP } from "@gsap/react";
+import { IconArrowNarrowDown, IconArrowNarrowRight } from "@tabler/icons-react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { notFound, useRouter } from "next/navigation";
+import styles from "./page.module.scss";
 
 const page = ({ params }: { params: { projectId: string } }) => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -24,146 +22,125 @@ const page = ({ params }: { params: { projectId: string } }) => {
   );
   const { contextSafe } = useGSAP();
   const router = useRouter();
+
   useGSAP(() => {
     if (!projectData) {
       notFound();
     }
-    // const enterSelectors = gsap.utils.toArray(".project_enter");
-    // enterSelectors?.forEach((el: any) => {
-    //   gsap.from(el, {
-    //     autoAlpha: 0,
-    //     y: -20,
-    //     duration: 1,
-    //     scrollTrigger: {
-    //       trigger: el,
-    //       start: "top bottom",
-    //       end: "bottom bottom",
-    //       toggleActions: "restart none none reverse",
-    //     },
-    //   });
-    // });
-
     const scrollTrigger = (el: any) => ({
       trigger: el,
       start: "top bottom",
       end: "bottom bottom",
-      toggleActions: "restart none none none",
+      toggleActions: "play none none none",
+      invalidateOnRefresh: true,
     });
-
-    gsap
-      .timeline()
-      .from(".project_title_left", {
-        autoAlpha: 0,
-        x: -vars?.offsetSm,
-        duration: vars?.enterAnimationDuration,
-      })
-      .from(
-        ".project_title_right",
-        {
-          autoAlpha: 0,
-          x: vars?.offsetSm,
-          duration: vars?.enterAnimationDuration,
-        },
-        `<+=${vars?.enterAnimationDuration / 5}`
-      )
-      .from(
-        ".project_tech_list",
-        {
-          autoAlpha: 0,
-          xPercent: -50,
-          duration: vars?.enterAnimationDuration / 2,
-        },
-        `<+=${vars?.enterAnimationDuration / 5}`
-      )
-      .from(".project_tech_item", {
-        autoAlpha: 0,
-        scale: 0.8,
-        duration: vars?.enterAnimationDuration / 2,
-        stagger: vars?.enterAnimationDuration / 5,
-      })
-      .from(
-        ".project_info_container>div",
-        {
-          autoAlpha: 0,
-          y: -vars?.offsetSm,
-          duration: vars?.enterAnimationDuration,
-          stagger: vars?.enterAnimationDuration / 5,
-        },
-        `>-=${vars?.enterAnimationDuration}`
-      )
-      .from(
-        ".project_parallax_images",
-        {
-          autoAlpha: 0,
-          scale: 0.9,
-          duration: vars?.enterAnimationDuration * 2,
-        },
-        0
-      );
+    const mm = gsap.matchMedia();
+    mm.add(
+      {
+        small: `(max-width: ${styleVars?.screenSmall})`,
+        medium: `(min-width: ${styleVars?.screenMedium})`,
+        large: `(min-width: ${styleVars?.screenLarge})`,
+      },
+      (ctx) => {
+        const { small }: any = ctx.conditions;
+        gsap
+          .timeline()
+          .from(`.${styles.title_container}`, {
+            autoAlpha: 0,
+            yPercent: -200,
+            duration: vars?.enterAnimationDuration,
+          })
+          .from(
+            ".project_title_left",
+            {
+              autoAlpha: 0,
+              xPercent: small ? 0 : -50,
+              scale: small ? 0.5 : 1,
+              duration: vars?.enterAnimationDuration * 2,
+            },
+            `<`
+          )
+          .from(
+            ".project_title_right",
+            {
+              autoAlpha: 0,
+              xPercent: small ? 0 : 50,
+              yPercent: small ? -100 : 0,
+              duration: vars?.enterAnimationDuration * 2,
+            },
+            `<`
+          )
+          .from(
+            `.${styles.tech_list}`,
+            {
+              autoAlpha: 0,
+              duration: vars?.enterAnimationDuration * 2,
+            },
+            `<+=${vars?.enterAnimationDuration}`
+          )
+          .from(
+            `.${styles.tech}`,
+            {
+              autoAlpha: 0,
+              xPercent: small ? 0 : -50,
+              yPercent: small ? 50 : 0,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 5,
+            },
+            `<`
+          )
+          .from(
+            `.${styles.info_label}`,
+            {
+              autoAlpha: 0,
+              yPercent: 100,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 5,
+            },
+            `<`
+          )
+          .from(
+            `.${styles.info_field}`,
+            {
+              autoAlpha: 0,
+              x: small ? 0 : vars?.offsetSm * -1,
+              yPercent: 100,
+              duration: vars?.enterAnimationDuration,
+              stagger: vars?.enterAnimationDuration / 5,
+            },
+            `<`
+          )
+          .from(
+            ".project_parallax_images",
+            {
+              autoAlpha: 0,
+              scale: 0.95,
+              duration: vars?.enterAnimationDuration,
+            },
+            "<"
+          );
+      }
+    );
     gsap.utils.toArray(".project_images_container>img").forEach((el: any) =>
       gsap.from(el, {
         autoAlpha: 0,
-        scale: 0.9,
+        scale: 1.05,
         duration: vars?.enterAnimationDuration,
         scrollTrigger: scrollTrigger(el),
       })
     );
-    gsap.from(".project_draggable", {
+    gsap.from(".project_draggable>*", {
       autoAlpha: 0,
-      scale: 0.9,
+      y: vars?.offsetMd,
       duration: vars?.enterAnimationDuration,
+      stagger: vars?.enterAnimationDuration / 3,
       scrollTrigger: scrollTrigger(".project_draggable"),
     });
     gsap.from(".project_nav_buttons", {
       autoAlpha: 0,
-      yPercent: -100,
+      scaleX: 0.9,
       duration: vars?.enterAnimationDuration,
       scrollTrigger: scrollTrigger(".project_nav_buttons"),
-    });
-  });
-  // const onMouseEnterNavButton = contextSafe((e: any, isLeft: boolean) => {
-  //   const getChild = gsap.utils.selector(e?.currentTarget);
-  //   const circleAnimation = isLeft ? { left: 0 } : { right: 0 };
-  //   gsap.to(getChild(".nav_circle"), {
-  //     scale: 0.8,
-  //     duration: vars?.durationSm,
-  //     ...circleAnimation,
-  //   });
-  //   gsap.to(getChild(".nav_button_child"), {
-  //     x: isLeft ? vars?.offsetSm : -vars?.offsetSm,
-  //     duration: vars?.durationSm,
-  //     stagger: isLeft ? vars?.staggerSm : -vars?.staggerSm,
-  //   });
-  // });
-  // const onMouseLeaveNavButton = contextSafe((e: any, isLeft: boolean) => {
-  //   const getChild = gsap.utils.selector(e?.currentTarget);
-  //   const circleAnimation = isLeft ? { left: "2rem" } : { right: "2rem" }; //TODO: change!!!
-  //   gsap.to(getChild(".nav_circle"), {
-  //     scale: 1,
-  //     duration: vars?.durationSm,
-  //     ...circleAnimation,
-  //   });
-  //   gsap.to(getChild(".nav_button_child"), {
-  //     x: 0,
-  //     duration: vars?.durationSm,
-  //     stagger: isLeft ? vars?.staggerSm : -vars?.staggerSm,
-  //   });
-  // });
-  const onClickNavButton = contextSafe((e: any, href: string) => {
-    const getChild = gsap.utils.selector(e?.currentTarget);
-    const circle: any = getChild(".nav_circle");
-    if (!circle[0]?.classList.contains("main_opacity_full")) {
-      circle[0]?.classList.add("main_opacity_full");
-    }
-    gsap.to(".main_opacity", { autoAlpha: 0, duration: vars?.durationSm });
-    gsap.to(circle, {
-      scale: 10,
-      backgroundColor: "white", //TODO: change!!!
-      duration: vars?.durationMd,
-      autoAlpha: 0,
-      onComplete: () => {
-        router?.push(href);
-      },
     });
   });
   const onMouseEnterWebsiteLink = contextSafe(() => {
@@ -175,13 +152,6 @@ const page = ({ params }: { params: { projectId: string } }) => {
       duration: vars?.durationSm,
     });
   });
-  // const onClickWebsiteLink = contextSafe(() => {
-  //   gsap.to(".project_website_link::before", {
-  //     autoAlpha: 1,
-  //     scale: 1.2,
-  //     duration: 0.3,
-  //   });
-  // });
   const getProject = (place: number): string => {
     const projects = data?.projects;
     const projectIndex = data?.projects?.findIndex(
@@ -200,16 +170,14 @@ const page = ({ params }: { params: { projectId: string } }) => {
     return params?.projectId;
   };
   const goToPrevProject = (e: any) => {
-    // onClickNavButton(e, getProject(-1));
     router?.push(getProject(-1));
   };
   const goToNextProject = (e: any) => {
-    // onClickNavButton(e, getProject(1));
     router?.push(getProject(1));
   };
   return (
     <section className={styles.project_container}>
-      <div className={`${styles.title_container} main_opacity`}>
+      <div className={`${styles.title_container} main_opacity hidden`}>
         <div className={`${styles.title} hidden project_title_left`}>
           <h1 className={`title`}>{projectData?.title}</h1>
           <p className={styles.title_year}>{projectData?.year}</p>
@@ -220,49 +188,32 @@ const page = ({ params }: { params: { projectId: string } }) => {
           className={`${styles.link} hidden project_title_right`}
           onMouseEnter={onMouseEnterWebsiteLink}
           onMouseLeave={onMouseLeaveWebsiteLink}
-          // onClick={onClickWebsiteLink}
         >
           Visit live website{" "}
           <IconArrowNarrowRight className="project_website_link" />
         </a>
       </div>
-      {/* <div
-        className={`${styles.tech_list} main_opacity hidden project_tech_list`}
-      >
-        {projectData?.techUsed?.map((tech, i) => (
-          <p
-            key={`tech_${i}`}
-            className={`${styles.tech} hidden project_tech_item`}
-          >
-            {tech}
-          </p>
-        ))}
-      </div> */}
       <div className={`${styles.contents_container} main_opacity`}>
         <div className={`${styles.info_container} project_info_container`}>
-          <div className={`${styles.info_group} ${styles.info_full} hidden`}>
+          <div className={`${styles.info_group} ${styles.info_full}`}>
             <p className={styles.info_label}>Technologies & Tools</p>
-            <div className={`${styles.tech_list}`}>
+            <div className={`${styles.tech_list} hidden`}>
               {projectData?.techUsed?.map((tech, i) => (
-                <p key={`tech_${i}`} className={`${styles.tech}`}>
+                <p key={`tech_${i}`} className={`${styles.tech} hidden`}>
                   {tech}
                 </p>
               ))}
             </div>
           </div>
-          <div className={`${styles.info_group} hidden`}>
+          <div className={`${styles.info_group}`}>
             <p className={styles.info_label}>Role</p>
             <p className={styles.info_field}>{projectData?.role?.join(", ")}</p>
           </div>
-          <div className={`${styles.info_group} hidden`}>
+          <div className={`${styles.info_group}`}>
             <p className={styles.info_label}>Type</p>
             <p className={styles.info_field}>{projectData?.type}</p>
           </div>
-          {/* <div className={`${styles.info_group} hidden`}>
-            <p className={styles.info_label}>Year</p>
-            <p className={styles.info_field}>{projectData?.year}</p>
-          </div> */}
-          <div className={`${styles.info_group} ${styles.info_full} hidden`}>
+          <div className={`${styles.info_group} ${styles.info_full}`}>
             <p className={styles.info_label}>Description</p>
             <p className={styles.info_field}>{projectData?.description}</p>
           </div>
@@ -272,27 +223,27 @@ const page = ({ params }: { params: { projectId: string } }) => {
           images={projectData?.images?.parallax || []}
           className="hidden project_parallax_images main_opacity"
         />
-        {/* <iframe
-          src="https://www.youtube.com/embed/DIM9gJf_V4M?si=r08g1_NYZTWBWj8D&amp;controls=0&autoplay=1&fs=0&loop=1&modestbranding=1"
-          title={`Video showing website ${projectData?.title}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          referrerPolicy="strict-origin-when-cross-origin"
-          className={styles.video}
-        ></iframe> */}
         <div
           className={`${styles.images_container} project_images_container main_opacity`}
         >
           {projectData?.images?.screenshots?.map((image, i) => (
-            <img
+            <Image
               src={image}
               alt={`Screenshot of ${projectData?.title}`}
               className={`${styles.image} hidden`}
               key={`project_screenshot_${i + 1}`}
+              width={2538}
+              height={1283}
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />
           ))}
         </div>
-        <div className="hidden project_draggable main_opacity">
-          <div className={styles.drag}>
+        <div
+          className={`${styles.drag_container} project_draggable main_opacity`}
+        >
+          <div className={`${styles.drag} hidden`}>
             <p>
               <IconArrowNarrowDown />
               DRAG THE LETTERS <IconArrowNarrowDown />
@@ -302,27 +253,13 @@ const page = ({ params }: { params: { projectId: string } }) => {
             params={{
               id: projectData?.id || "",
               svg: projectData?.svg || { viewBox: "", text: [] },
+              className: "hidden",
             }}
           />
         </div>
         <div
           className={`${styles.nav_buttons} hidden project_nav_buttons main_opacity`}
         >
-          {/* <button
-            className={`${styles.nav_button} ${styles.left}`}
-            onMouseEnter={(e) => onMouseEnterNavButton(e, true)}
-            onMouseLeave={(e) => onMouseLeaveNavButton(e, true)}
-            onClick={goToPrevProject}
-          >
-            <IconArrowNarrowLeft className="nav_button_child main_opacity" />
-            <p className={`${styles.text} nav_button_child main_opacity`}>
-              PREV
-            </p>
-            <div
-              className={`${styles.nav_circle} nav_circle main_opacity`}
-            ></div>
-            <div className={`${styles.nav_line} nav_line main_opacity`}></div>
-          </button> */}
           <ArrowButton
             text="PREV"
             direction="left"
@@ -335,21 +272,6 @@ const page = ({ params }: { params: { projectId: string } }) => {
             type="navigate"
             onClick={goToNextProject}
           />
-          {/* <button
-            className={`${styles.nav_button} ${styles.right}`}
-            onMouseEnter={(e) => onMouseEnterNavButton(e, false)}
-            onMouseLeave={(e) => onMouseLeaveNavButton(e, false)}
-            onClick={goToNextProject}
-          >
-            <p className={`${styles.text} nav_button_child main_opacity`}>
-              NEXT
-            </p>
-            <IconArrowNarrowRight className="nav_button_child main_opacity" />
-            <div
-              className={`${styles.nav_circle} nav_circle main_opacity`}
-            ></div>
-            <div className={`${styles.nav_line} nav_line main_opacity`}></div>
-          </button> */}
         </div>
       </div>
       <Contacts />

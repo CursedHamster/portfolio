@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { IconArrowNarrowRight } from "@tabler/icons-react";
-import styles from "./arrowButton.module.scss";
 import styleVars from "@/app/_vars.module.scss";
 import vars from "@/data/vars";
+import { useGSAP } from "@gsap/react";
+import { IconArrowNarrowRight } from "@tabler/icons-react";
+import gsap from "gsap";
+import { isMobile } from "react-device-detect";
+import styles from "./arrowButton.module.scss";
 
 const ArrowButton = (params: {
   text?: string;
@@ -16,7 +16,6 @@ const ArrowButton = (params: {
   onClick?: (e: any) => void;
 }) => {
   const { contextSafe } = useGSAP();
-  // const [rightAnimation, setRightAnimation] = useState<GSAPTween>();
 
   const onMouseEnterNavButton = contextSafe((e: any, isLeft: boolean) => {
     const getChild = gsap.utils.selector(e?.currentTarget);
@@ -35,7 +34,9 @@ const ArrowButton = (params: {
 
   const onMouseLeaveNavButton = contextSafe((e: any, isLeft: boolean) => {
     const getChild = gsap.utils.selector(e?.currentTarget);
-    const circleAnimation = isLeft ? { left: "2rem" } : { right: "2rem" }; //TODO: change!!!
+    const circleAnimation = isLeft
+      ? { left: styleVars?.gapLg }
+      : { right: styleVars?.gapLg };
     gsap.to(getChild(".nav_circle"), {
       scale: 1,
       duration: vars?.durationSm,
@@ -98,11 +99,15 @@ const ArrowButton = (params: {
       } ${params?.type === "navigate" ? styles.full_width : ""} ${
         params?.className
       }`}
-      onMouseEnter={(e) =>
-        onMouseEnterNavButton(e, params?.direction === "left")
+      onMouseEnter={
+        isMobile
+          ? undefined
+          : (e) => onMouseEnterNavButton(e, params?.direction === "left")
       }
-      onMouseLeave={(e) =>
-        onMouseLeaveNavButton(e, params?.direction === "left")
+      onMouseLeave={
+        isMobile
+          ? undefined
+          : (e) => onMouseLeaveNavButton(e, params?.direction === "left")
       }
       onClick={params?.type === "navigate" ? navigateTo : clickButton}
     >

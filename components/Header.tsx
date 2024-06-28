@@ -1,22 +1,21 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import gsap from "gsap";
+import vars from "@/data/vars";
+import navigate from "@/util/navigate";
 import { useGSAP } from "@gsap/react";
-import Image from "next/image";
 import {
-  IconMenu2,
-  IconX,
   IconArrowNarrowRight,
   IconCheck,
+  IconMenu,
+  IconX
 } from "@tabler/icons-react";
-import GradientButton from "./GradientButton";
-import navigate from "@/util/navigate";
-import styles from "./header.module.scss";
-import styleVars from "@/app/_vars.module.scss";
+import gsap from "gsap";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import data from "../data/data";
-import vars from "@/data/vars";
+import GradientButton from "./GradientButton";
+import styles from "./header.module.scss";
 
 const Header = () => {
   gsap.registerPlugin(useGSAP);
@@ -46,7 +45,6 @@ const Header = () => {
           },
         })
         .from(".nav_mobile", {
-          // yPercent: -100,
           autoAlpha: 0,
           duration: vars?.durationMd,
         })
@@ -58,23 +56,13 @@ const Header = () => {
         .from(
           ".nav_mobile_li",
           {
-            // xPercent: -20,
-            yPercent: -100,
+            yPercent: -50,
             autoAlpha: 0,
             duration: vars?.durationSm,
             stagger: vars?.staggerSm,
           },
           vars?.durationMd / 2
         )
-      // .from(
-      //   ".nav_mobile_button",
-      //   {
-      //     xPercent: -100,
-      //     autoAlpha: 0,
-      //     duration: 0.5,
-      //   },
-      //   "<=0.5"
-      // );
     );
   });
 
@@ -85,20 +73,8 @@ const Header = () => {
       autoAlpha: 0,
       duration: vars?.enterAnimationDuration,
     });
-    // gsap.from(`.${styles?.logo}`, {
-    //   yPercent: -50,
-    //   duration: vars?.enterAnimationDuration,
-    // });
-
     return () => window.removeEventListener("resize", changeIsMobile);
   });
-
-  // useEffect(() => {
-  //   setIsMobile(window?.innerWidth <= 1000);
-  //   window.addEventListener("resize", changeIsMobile);
-
-  //   return () => window.removeEventListener("resize", changeIsMobile);
-  // }, []);
 
   useEffect(() => {
     if (!isMobile && isMenuOpen) {
@@ -112,6 +88,17 @@ const Header = () => {
     }
   }, [isMenuOpen]);
 
+  const navigateToLink = (href: string) => {
+    closeMenu();
+    navigate(href, router);
+  };
+
+  const navigateToContacts = () => {
+    navigateToLink(
+      document.getElementById("contacts") ? "#contacts" : "/#contacts"
+    );
+  };
+
   return (
     <header className={`${styles.header} hidden`} ref={headerRef}>
       <Image
@@ -123,18 +110,8 @@ const Header = () => {
         priority
         onClick={() => navigate("/#home", router)}
       />
-      {/* <div onClick={() => navigate("/#home", router)}>
-        <Image
-          src="/logo_1.svg"
-          alt="Hamster Logo"
-          className={styles.logo}
-          width={100}
-          height={100}
-          priority
-        />
-      </div> */}
       {isMobile ? (
-        <IconMenu2 className={styles.burger} onClick={openMenu} />
+        <IconMenu className={styles.burger} onClick={openMenu} />
       ) : (
         <nav className={styles.nav}>
           {data?.sections?.map((section, i) => (
@@ -148,14 +125,7 @@ const Header = () => {
           <GradientButton
             text="Hire me"
             icon={true}
-            onClick={() =>
-              navigate(
-                document.getElementById("contacts")
-                  ? "#contacts"
-                  : "/#contacts",
-                router
-              )
-            }
+            onClick={navigateToContacts}
           />
         </nav>
       )}
@@ -170,10 +140,7 @@ const Header = () => {
               <li
                 className={`${styles.nav_mobile_li} nav_mobile_li`}
                 key={`nav_mobile_link_` + i}
-                onClick={() => {
-                  closeMenu();
-                  navigate("/#" + section, router);
-                }}
+                onClick={() => navigateToLink("/#" + section)}
               >
                 <span className={`${styles.li_number} nav_mobile_li_number`}>
                   ({i + 1})
@@ -188,6 +155,7 @@ const Header = () => {
             ))}
             <li
               className={`${styles.nav_mobile_li} ${styles.nav_mobile_button} nav_mobile_li`}
+              onClick={navigateToContacts}
             >
               <span className={`${styles.li_number} nav_mobile_li_number`}>
                 ({data?.sections?.length + 1})
@@ -200,12 +168,6 @@ const Header = () => {
               </div>
             </li>
           </ul>
-          {/* <button className={`${styles.nav_mobile_button} nav_mobile_button`}>
-            <p className={styles.li_title}>Hire me</p>
-            <div className={`${styles.li_icon}`}>
-              <IconArrowNarrowRight />
-            </div>
-          </button> */}
         </nav>
       )}
     </header>

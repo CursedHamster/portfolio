@@ -149,4 +149,8 @@ $icon-size-xxl: 5rem;
   shadowPinkSm: $shadow-pink-sm;
   shadowPinkMd: $shadow-pink-md;
   paddingSm: $padding-sm;
+  gapLg: $gap-lg;
+  screenSmall: $max-width-sm;
+  screenMedium: $max-width-sm + 1px;
+  screenLarge: $max-width-lg + 1px;
 }

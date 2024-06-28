@@ -1,21 +1,9 @@
 @import "../app/vars.module";
 
 .grid {
+  scroll-margin-top: $padding-xl;
   width: 100%;
   display: grid;
-  /* grid-template: 30% repeat(3, 1fr) / 20% repeat(4, 1fr); */
-  // grid-template-columns: 20rem repeat(6, 1fr);
-  // grid-template-rows: repeat(9, 1fr);
-  // grid-template-areas:
-  //   "about desc desc desc desc desc desc"
-  //   "banner desc desc desc desc desc desc"
-  //   "banner desc desc desc desc desc desc"
-  //   "banner lang lang lang skills skills skills"
-  //   "banner lang lang lang skills skills skills"
-  //   "banner edu edu edu skills skills skills"
-  //   "banner edu edu edu interests interests interests"
-  //   "banner edu edu edu interests interests interests"
-  //   "banner edu edu edu interests interests interests";
   grid-template-columns: 2fr 1fr repeat(2, 1.5fr) repeat(2, 0.5fr) 2fr;
   grid-template-rows: 1.5fr repeat(3, 0.5fr);
   grid-template-areas:
@@ -24,19 +12,18 @@
     "skills skills socials interests edu edu edu"
     "skills skills socials music edu edu edu";
   row-gap: $gap-lg;
+  -moz-column-gap: $gap-md;
   column-gap: $gap-md;
   padding: 0 $padding-xl;
 }
 
 .grid_element {
-  // visibility: visible !important;
   padding: $padding-md 0;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: $gap-sm;
   border-radius: $border-radius-md;
-  // @include shadowBorder(2px, 0.1);
   &.solid {
     background: $secondary-background-color;
     @include border($border-width-sm, $secondary-background-color);
@@ -64,28 +51,79 @@
   align-items: center;
   gap: $gap-sm;
   svg {
+    height: $icon-size-sm;
+    width: auto;
     color: $pink-accent-color;
   }
 }
 
 .title_container {
+  position: relative;
   padding: 2vw;
   grid-area: about;
-  // grid-area: 1/1/2/2;
-  // background: $primary-text-color;
   min-width: 0;
   min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   h2 {
     max-width: 100%;
     word-wrap: break-word;
-    @include titleText(
-      $font-size-xxl,
-      $primary-background-color,
-      italic
-    );
+    @include titleText($font-size-xxl, $primary-text-color, italic);
+  }
+  .title_container_copy {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    h2 {
+      transform: translateX(2%) translateY(2%);
+      @include titleStrokeText(
+        $border-width-xs,
+        $primary-background-color,
+        $font-size-xxl,
+        italic
+      );
+    }
+  }
+  .title_icon {
+    position: absolute;
+    height: auto;
+    color: $secondary-background-color;
+    z-index: -1;
+    &_1 {
+      width: 100%;
+      top: -40%;
+      right: -30%;
+      transform: rotate(45deg);
+    }
+    &_2 {
+      width: 70%;
+      bottom: -30%;
+      left: -20%;
+    }
+  }
+  .gradient_circle {
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $primary-gradient;
+    border-radius: $border-radius-full;
+    z-index: -1;
   }
 }
 
@@ -93,16 +131,14 @@
   grid-area: desc;
   padding-left: $padding-md;
   padding-right: $padding-md;
-  /* grid-column: span 3; */
   background: $secondary-background-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: $gap-md;
-  // grid-area: 1/2/2/6;
   .grid_title {
     text-align: start;
-    // min-height: $font-size-lg;
+    padding: 0;
   }
   p {
     color: $secondary-text-color;
@@ -111,9 +147,6 @@
 
 .languages_container {
   grid-area: lang;
-  // grid-area: 1/6/2/7;
-  /* grid-column: span 2; */
-  // background: $secondary-background-color;
   flex-shrink: 0;
   padding: 0;
   display: flex;
@@ -210,17 +243,13 @@
 .roles_container {
   grid-area: roles;
   justify-content: center;
-  // grid-area: 2 / 1 / 5 / 3;
 }
 
 .skills_container {
   grid-area: skills;
-  // grid-area: 2 / 3 / 5 / 4;
   position: relative;
   padding-left: 0;
   padding-right: 0;
-  /* grid-column: span 4; */
-  // gap: $gap-md;
   background: $secondary-background-color;
   display: flex;
   flex-direction: column;
@@ -248,52 +277,12 @@
   }
 }
 
-.skills_group {
-  padding-top: $gap-lg;
-  width: 100%;
-  padding-bottom: $padding-sm;
-  display: flex;
-  gap: $gap-md;
-  flex-direction: column;
-  color: $primary-text-color;
-  overflow-x: hidden;
-}
-
-.skills {
-  white-space: nowrap;
-  will-change: transform;
-  div {
-    cursor: default;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: $gap-sm;
-    font-size: $font-size-md;
-    padding: $padding-xs $padding-sm;
-    margin: 0 $gap-sm;
-    opacity: 0.5;
-    transition: opacity 0.1s ease-in-out;
-    border-radius: $border-radius-sm;
-    background: $secondary-background-color;
-    // background: $primary-background-color;
-    // @include border($border-width-sm, $secondary-background-color);
-    // @include border();
-    &:hover {
-      font-style: italic;
-      opacity: 1;
-      /*font-weight: 600;
-      */
-    }
-  }
-}
-
 .socials_container {
   padding-left: $padding-sm;
   padding-right: $padding-sm;
   grid-area: socials;
   display: flex;
   flex-direction: column;
-  // grid-area: 2/3/3/4;
 }
 
 .socials {
@@ -342,6 +331,8 @@
     z-index: -1;
   }
   & > svg {
+    height: $icon-size-sm;
+    width: auto;
     transform: rotate(-45deg);
     transition: $transition-md;
   }
@@ -359,12 +350,9 @@
 .interests_container {
   position: relative;
   grid-area: interests;
-  // grid-area: 2 / 4 / 4 / 5;
-  /* grid-column: span 2; */
   background: $primary-text-color;
   font-size: $font-size-xl;
   color: $primary-background-color;
-  // overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -381,7 +369,6 @@
 .music_container {
   position: relative;
   grid-area: music;
-  // grid-area: 4 / 4 / 5 / 5;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -410,8 +397,6 @@
 .education_container {
   grid-area: edu;
   position: relative;
-  /* grid-row: span 2;
-  grid-column: span 2; */
   justify-content: center;
   overflow: hidden;
   .background_image {
@@ -422,6 +407,7 @@
     padding: $padding-sm;
     right: -50%;
     bottom: -50%;
+    -o-object-fit: contain;
     object-fit: contain;
     opacity: 0.03;
   }
@@ -441,7 +427,6 @@
 
 @media (max-width: $max-width-xl) {
   .grid {
-    // padding: $padding-sm $padding-lg;
     grid-template-columns: 2.5fr 1fr 1.5fr 1fr repeat(3, 0.5fr);
     grid-template-rows: 1fr 0.75fr 0.25fr 1.25fr;
     grid-template-areas:
@@ -461,22 +446,18 @@
 @media (max-width: $max-width-md) {
   .grid {
     padding: 0 $padding-md;
-    // grid-template-columns: 2fr 0.5fr 1fr 0.5fr 1fr 1fr;
-    // grid-template-rows: 1.5fr 1.5fr 0.5fr 1fr;
-    // grid-template-areas:
-    //   "about desc desc desc desc desc"
-    //   "roles roles roles lang lang lang"
-    //   "roles roles roles interests interests interests"
-    //   "music music music interests interests interests"
-    //   "skills skills skills skills socials socials"
-    //   "edu edu edu edu edu edu"
-    //   ;
     display: flex;
-    // flex-direction: column;
     flex-wrap: wrap;
     gap: $gap-lg;
-    >* {
+    > * {
       flex: 100%;
+    }
+  }
+
+  .title_container {
+    .gradient_circle {
+      height: 80%;
+      width: auto;
     }
   }
 
@@ -492,21 +473,7 @@
 
   .languages_container {
     flex: 10%;
-    // height: fit-content;
-    // flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
   }
-
-  // .language_container {
-  //   flex-grow: 0;
-  //   width: fit-content;
-  //   padding: $padding-md;
-  //   &.icon {
-  //     height: 100%;
-  //     width: auto;
-  //   }
-  // }
 
   .skills_container {
     width: 100%;
@@ -527,11 +494,6 @@
   .music_container {
     flex: 60%;
   }
-
-  // .banner {
-  //   min-height: unset;
-  //   order: 6;
-  // }
 }
 
 @media (max-width: $max-width-sm) {
@@ -539,7 +501,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: unset;
-    >* {
+    > * {
       flex: unset;
     }
   }
@@ -554,7 +516,6 @@
 
   .roles {
     .role {
-      // width: calc(100% - $padding-lg);
       font-size: $font-size-sm;
     }
   }
@@ -592,10 +553,6 @@
   .interests_container {
     flex: unset;
   }
-
-  // .interest {
-  //   padding: $padding-sm;
-  // }
 
   .music_container {
     flex: unset;

@@ -1,16 +1,11 @@
 "use client";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import {
-  IconBrandGithubFilled,
-  IconMailFilled,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
-import IconLink from "./IconLink";
-import styles from "./footer.module.scss";
 import data from "@/data/data";
 import vars from "@/data/vars";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import IconLink from "./IconLink";
+import styles from "./footer.module.scss";
 
 const Footer = () => {
   gsap.registerPlugin(useGSAP);
@@ -22,7 +17,7 @@ const Footer = () => {
     });
   });
   return (
-    <footer className={`main_opacity`}>
+    <footer>
       <div className={`${styles.footer} footer`}>
         <p className={styles.copyright}>
           ©2024. Created by Viktoriia Harniuk. All rights reserved.

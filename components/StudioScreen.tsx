@@ -11,7 +11,11 @@ import {
 interface FileInfo {
   name: string;
   extension: string;
-  text: string;
+  text?: string;
+  content?: {
+    vars: { id: number; key: string; value: string; isWord: boolean }[];
+    properties: { name: string; valueId: number }[];
+  };
 }
 
 const StudioScreen = (props: {
@@ -84,7 +88,7 @@ const StudioScreen = (props: {
           </div>
           <div className={styles.code_container}>
             {activeFile?.extension === reactExtension ? (
-              <div className={`${styles.code} ${styles.react}`}>
+              <>
                 <span className={styles.color_3}>const</span>{" "}
                 <span className={styles.color_2}>{activeFile?.name}</span>{" "}
                 <span className={styles.color_1}>=</span>{" "}
@@ -110,20 +114,43 @@ const StudioScreen = (props: {
                 <br />
                 <span className={styles.color_1}>export default</span>{" "}
                 <span className={styles.color_4}>{activeFile?.name}</span>;
-              </div>
+              </>
             ) : (
-              <div className={`${styles.code} ${styles.css}`}>
-                {`const Home = () => {
-    return (
-        <div>
-           <h1>Thank you for visiting my website!
-         Have a nice day ❀</h1>
-        </div>
-     );
-};
-
-export default Home;`}
-              </div>
+              <>
+                {activeFile?.content?.vars?.map((variable) => (
+                  <div key={`studio_var_${variable?.id}`}>
+                    <span>
+                      {"$"}
+                      {variable?.key}:
+                    </span>
+                    <span className={variable?.isWord ? "" : styles?.color_1}>
+                      {" "}
+                      {variable?.value}
+                    </span>
+                    ;
+                  </div>
+                ))}
+                <br />
+                <span className={styles.color_1}>h1</span>
+                <span className={styles.color_2}>{" {"}</span>
+                <div className={styles.tab}>
+                  {activeFile?.content?.properties?.map((property, i) => (
+                    <div key={`studio_property_${i + 1}`}>
+                      <span className={styles.color_5}>{property?.name}:</span>
+                      <span>
+                        {" $"}
+                        {
+                          activeFile?.content?.vars?.find(
+                            (variable) => variable?.id === property?.valueId
+                          )?.key
+                        }
+                      </span>
+                      ;
+                    </div>
+                  ))}
+                </div>
+                <span className={styles.color_2}>{"}"}</span>
+              </>
             )}
           </div>
         </div>

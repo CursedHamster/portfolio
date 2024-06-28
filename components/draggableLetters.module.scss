@@ -1,34 +1,79 @@
 @import "@/app/_vars.module.scss";
 
 .drag_container {
-  // background-image: $primary-gradient;
-  // padding: $padding-sm;
+  position: relative;
   padding: 0;
   border-radius: $border-radius-md;
-  // @include shadowBorder($border-width-sm);
+  background: $primary-background-color;
+  @include border($border-width-sm, $secondary-background-color);
+  overflow: hidden;
 }
 
 .drag_frame {
   width: 100%;
   height: 100%;
   padding: $padding-lg;
-  // border-radius: $border-radius-md;
-  // @include border($border-width-sm, $primary-background-color)
 }
 
 .drag_text {
   width: 100%;
   fill: $primary-background-color;
-  /* stroke: black; */
-  // stroke-width: $border-width-sm;
   overflow: visible;
+
+  fill: $primary-text-color;
   path {
     transform-origin: $padding-md center;
+  }
+  .path_copy {
+    fill: none;
+    stroke: $primary-background-color;
+    transform: translateX(1%) translateY(5%);
+  }
+}
+
+.circle {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: $border-radius-full;
+  z-index: -1;
+
+  &_border {
+    @include border($border-width-sm, $secondary-background-color);
+  }
+  &_filled {
+    background: $primary-gradient;
+  }
+
+  &_1 {
+    width: 40%;
+    left: -10%;
+    bottom: -70%;
+  }
+  &_2 {
+    width: 60%;
+    right: -10%;
+    top: -50%;
+  }
+
+  &_3 {
+    width: 42%;
+    left: -10%;
+    bottom: -70%;
+  }
+  &_4 {
+    width: 20%;
+    left: -5%;
+    top: -5%;
+  }
+  &_5 {
+    width: 70%;
+    right: -10%;
+    top: -70%;
   }
 }
 
 @media (max-width: $max-width-md) {
-  .drag_container {
-    padding: $padding-md $padding-lg;
-  } 
+  .drag_frame {
+    padding: $padding-md $padding-md;
+  }
 }
