@@ -17,6 +17,8 @@ import styles from "./page.module.scss";
 
 const page = ({ params }: { params: { projectId: string } }) => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
+  ScrollTrigger.refresh();
+
   const projectData = data?.projects?.find(
     (project) => project?.id === params?.projectId
   );
@@ -215,7 +217,9 @@ const page = ({ params }: { params: { projectId: string } }) => {
           </div>
           <div className={`${styles.info_group} ${styles.info_full}`}>
             <p className={styles.info_label}>Description</p>
-            <p className={styles.info_field}>{projectData?.description}</p>
+            <p className={`${styles.info_field} ${styles.description}`}>
+              {projectData?.description}
+            </p>
           </div>
         </div>
         <ParallaxImages
@@ -224,13 +228,17 @@ const page = ({ params }: { params: { projectId: string } }) => {
           className="hidden project_parallax_images main_opacity"
         />
         <div className={`${styles.video_container} project_video main_opacity`}>
-          <video
+          {/* <video
             className={styles.video}
             src={projectData?.video}
             itemType="video/mp4"
             autoPlay
             loop
-          />
+          /> */}
+          <video className={styles.video} autoPlay loop preload="none">
+            <source src={projectData?.video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div
           className={`${styles.images_container} project_images_container main_opacity`}
@@ -243,9 +251,10 @@ const page = ({ params }: { params: { projectId: string } }) => {
               key={`project_screenshot_${i + 1}`}
               width={2538}
               height={1283}
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
+              priority
+              // loading="lazy"
+              // placeholder="blur"
+              // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />
           ))}
         </div>

@@ -58,8 +58,8 @@ const ParallaxImages = (params: {
               width={1284}
               height={2781}
               quality={1}
-              loading="lazy"
-              // priority
+              // loading="lazy"
+              priority
               // placeholder="blur"
               // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />

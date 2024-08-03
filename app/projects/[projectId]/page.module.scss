@@ -73,6 +73,9 @@
 .info_field {
   visibility: hidden;
   font-size: $font-size-sm;
+}
+
+.description {
   white-space: pre-line;
 }
 
@@ -212,6 +215,9 @@
   }
   .info_field {
     font-size: $font-size-md;
+  }
+  .description {
+    text-align: justify;
   }
   .images_container {
     gap: $gap-md;
