@@ -235,7 +235,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
             autoPlay
             loop
           /> */}
-          <video className={styles.video} autoPlay loop preload="none">
+          <video className={styles.video} autoPlay loop>
             <source src={projectData?.video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
