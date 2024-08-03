@@ -47,6 +47,10 @@ textarea {
   padding: 0;
 }
 
+textarea {
+  color: $primary-text-color !important;
+}
+
 footer {
   overflow-y: hidden;
 }
