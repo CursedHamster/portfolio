@@ -1,5 +1,6 @@
 "use client";
 
+import navigate from "@/util/navigate";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import {
@@ -8,12 +9,9 @@ import {
   // IconBrandGithubFilled,
   // IconMailFilled,
   // IconBrandLinkedin,
-  IconMouseFilled,
-  IconStarFilled,
 } from "@tabler/icons-react";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import GradientBackground from "./GradientBackground";
 import StudioScreen from "./StudioScreen";
 import IconLink from "./IconLink";
 import Tag from "./Tag";
@@ -21,9 +19,12 @@ import styles from "./hero.module.scss";
 import styleVars from "@/app/_vars.module.scss";
 import data from "@/data/data";
 import vars from "@/data/vars";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
   gsap.registerPlugin(useGSAP);
+
+  const router = useRouter();
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -176,8 +177,15 @@ const Hero = () => {
           <h3 className={styles.subtitle}>Web Developer</h3>
         </div>
         <div className={`${styles.buttons} hidden hero_buttons`}>
-          <PrimaryButton text="Contact me" />
-          <SecondaryButton text="See my work" icon={true} />
+          <PrimaryButton
+            text="Contact me"
+            onClick={() => navigate("#contacts", router)}
+          />
+          <SecondaryButton
+            text="See my work"
+            icon={true}
+            onClick={() => navigate("#projects", router)}
+          />
         </div>
       </div>
       <div className={`${styles.figure}`}>

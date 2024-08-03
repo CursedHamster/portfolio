@@ -86,28 +86,27 @@ const Contacts = () => {
     };
     setFormErrors(errors);
     if (!(errors.email || errors.message)) {
-      console.log("message sent"); //TODO: remove
       setIsFormOk(true);
-      // try {
-      //   const res = await fetch(`/api/send`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(formData),
-      //   });
-      //   const data = await res.json();
-      //   if (!data?.error) {
-      //     changeMessageType(true);
-      //     setFormData(emptyFormData)
-      //   } else {
-      //     changeMessageType(false);
-      //   }
-      //   messageSentTimeline?.restart();
-      // } catch (error) {
-      //   changeMessageType(false);
-      //   messageSentTimeline?.restart();
-      // }
+      try {
+        const res = await fetch(`/api/send`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        if (!data?.error) {
+          setIsFormOk(true);
+          setFormData(emptyFormData);
+        } else {
+          setIsFormOk(false);
+        }
+        messageSentTimeline?.restart();
+      } catch (error) {
+        setIsFormOk(false);
+        messageSentTimeline?.restart();
+      }
     } else {
       setIsFormOk(false);
     }

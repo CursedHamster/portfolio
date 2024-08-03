@@ -26,6 +26,7 @@ const Projects = () => {
   const [zIndex, setZIndex] = useState(0);
   const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
   const cursorDifference = 100;
+  const maxImages = 5;
   const canChangeCursorXY = (newX: number, newY: number) =>
     Math.abs(cursorXY?.x - newX) >= cursorDifference ||
     Math.abs(cursorXY?.y - newY) >= cursorDifference;
@@ -170,9 +171,7 @@ const Projects = () => {
         );
         setCursorXY({ x: x, y: y });
         const newCurrentImage = currentImage + 1;
-        setCurrentImage(
-          imageUrls?.length <= newCurrentImage ? 0 : newCurrentImage
-        );
+        setCurrentImage(maxImages <= newCurrentImage ? 0 : newCurrentImage);
         const newZIndex = zIndex + 1;
         setZIndex(15 <= newZIndex ? 0 : newZIndex);
       }
@@ -249,7 +248,7 @@ const Projects = () => {
       </div>
       <div className={styles.cursor_image} ref={cursorImage}>
         <div className={styles.image_container} ref={imageContainer}>
-          {imageUrls?.map((imageUrl, i) => (
+          {imageUrls?.slice(0, maxImages)?.map((imageUrl, i) => (
             <div
               className={`${styles.image_div} hidden projects_cursor_image`}
               key={`projects_image_${i}`}

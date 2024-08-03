@@ -57,10 +57,11 @@ const ParallaxImages = (params: {
               className={styles.parallax_image}
               width={1284}
               height={2781}
-              quality={65}
-              priority
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
+              quality={1}
+              loading="lazy"
+              // priority
+              // placeholder="blur"
+              // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />
           );
 

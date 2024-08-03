@@ -104,7 +104,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
             {
               autoAlpha: 0,
               x: small ? 0 : vars?.offsetSm * -1,
-              yPercent: 100,
+              y: vars?.offsetMd,
               duration: vars?.enterAnimationDuration,
               stagger: vars?.enterAnimationDuration / 5,
             },
@@ -223,6 +223,15 @@ const page = ({ params }: { params: { projectId: string } }) => {
           images={projectData?.images?.parallax || []}
           className="hidden project_parallax_images main_opacity"
         />
+        <div className={`${styles.video_container} project_video main_opacity`}>
+          <video
+            className={styles.video}
+            src={projectData?.video}
+            itemType="video/mp4"
+            autoPlay
+            loop
+          />
+        </div>
         <div
           className={`${styles.images_container} project_images_container main_opacity`}
         >
@@ -234,7 +243,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
               key={`project_screenshot_${i + 1}`}
               width={2538}
               height={1283}
-              priority
+              loading="lazy"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />

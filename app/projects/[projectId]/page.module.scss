@@ -73,6 +73,7 @@
 .info_field {
   visibility: hidden;
   font-size: $font-size-sm;
+  white-space: pre-line;
 }
 
 .tech_list {
@@ -95,10 +96,11 @@
 
 .video {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: auto;
   margin: $gap-lg 0;
   border: 0;
   border-radius: $border-radius-md;
+  @include border($border-width-sm, $secondary-background-color);
 }
 
 .images_container {
