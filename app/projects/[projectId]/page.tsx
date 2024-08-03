@@ -14,6 +14,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { notFound, useRouter } from "next/navigation";
 import styles from "./page.module.scss";
+import { isMobile } from "react-device-detect";
 
 const page = ({ params }: { params: { projectId: string } }) => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -222,11 +223,13 @@ const page = ({ params }: { params: { projectId: string } }) => {
             </p>
           </div>
         </div>
-        <ParallaxImages
-          title={projectData?.title || ""}
-          images={projectData?.images?.parallax || []}
-          className="hidden project_parallax_images main_opacity"
-        />
+        {!isMobile && (
+          <ParallaxImages
+            title={projectData?.title || ""}
+            images={projectData?.images?.parallax || []}
+            className="hidden project_parallax_images main_opacity"
+          />
+        )}
         <div className={`${styles.video_container} project_video main_opacity`}>
           <video
             className={styles.video}
