@@ -234,6 +234,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
             itemType="video/mp4"
             autoPlay
             loop
+            controls
           />
           {/* <video className={styles.video} autoPlay loop>
             <source src={projectData?.video} type="video/mp4" />
