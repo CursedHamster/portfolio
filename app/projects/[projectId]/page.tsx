@@ -235,7 +235,6 @@ const page = ({ params }: { params: { projectId: string } }) => {
             autoPlay
             muted
             loop
-            controls
           />
           {/* <video className={styles.video} autoPlay loop>
             <source src={projectData?.video} type="video/mp4" />
