@@ -11,7 +11,7 @@ import {
   IconLoader,
   IconSchool,
   IconSparkles,
-  IconWorld
+  IconWorld,
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -186,6 +186,7 @@ const About = () => {
           <div className={styles.socials}>
             {data?.socials?.map((social, i) => (
               <a
+                target="_blank"
                 href={social?.link}
                 className={`${styles.social}`}
                 key={`about_social_${i + 1}`}
