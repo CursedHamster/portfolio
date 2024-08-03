@@ -228,17 +228,17 @@ const page = ({ params }: { params: { projectId: string } }) => {
           className="hidden project_parallax_images main_opacity"
         />
         <div className={`${styles.video_container} project_video main_opacity`}>
-          {/* <video
+          <video
             className={styles.video}
             src={projectData?.video}
             itemType="video/mp4"
             autoPlay
             loop
-          /> */}
-          <video className={styles.video} autoPlay loop>
+          />
+          {/* <video className={styles.video} autoPlay loop>
             <source src={projectData?.video} type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
         </div>
         <div
           className={`${styles.images_container} project_images_container main_opacity`}
