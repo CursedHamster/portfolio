@@ -233,6 +233,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
             src={projectData?.video}
             itemType="video/mp4"
             autoPlay
+            muted
             loop
             controls
           />
