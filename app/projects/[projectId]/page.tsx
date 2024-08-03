@@ -257,8 +257,8 @@ const page = ({ params }: { params: { projectId: string } }) => {
               height={1283}
               priority
               // loading="lazy"
-              // placeholder="blur"
-              // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />
           ))}
         </div>
