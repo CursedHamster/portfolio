@@ -36,7 +36,6 @@ const page = ({ params }: { params: { projectId: string } }) => {
       end: "bottom bottom",
       toggleActions: "play none none none",
       invalidateOnRefresh: true,
-      markers: true,
     });
     const mm = gsap.matchMedia();
     mm.add(
