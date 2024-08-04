@@ -36,6 +36,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
       end: "bottom bottom",
       toggleActions: "play none none none",
       invalidateOnRefresh: true,
+      markers: true,
     });
     const mm = gsap.matchMedia();
     mm.add(
@@ -145,16 +146,20 @@ const page = ({ params }: { params: { projectId: string } }) => {
       duration: vars?.enterAnimationDuration,
       scrollTrigger: scrollTrigger(".project_nav_buttons"),
     });
+    ScrollTrigger.refresh();
   });
+
   const onMouseEnterWebsiteLink = contextSafe(() => {
     gsap.to(".project_website_link", { rotate: 0, duration: vars?.durationSm });
   });
+
   const onMouseLeaveWebsiteLink = contextSafe(() => {
     gsap.to(".project_website_link", {
       rotate: -45,
       duration: vars?.durationSm,
     });
   });
+  
   const getProject = (place: number): string => {
     const projects = data?.projects;
     const projectIndex = data?.projects?.findIndex(
