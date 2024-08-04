@@ -146,7 +146,9 @@ const page = ({ params }: { params: { projectId: string } }) => {
       duration: vars?.enterAnimationDuration,
       scrollTrigger: scrollTrigger(".project_nav_buttons"),
     });
-    ScrollTrigger.refresh();
+    setTimeout(function () {
+      ScrollTrigger.refresh();
+    }, 1000);
   });
 
   const onMouseEnterWebsiteLink = contextSafe(() => {
@@ -159,7 +161,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
       duration: vars?.durationSm,
     });
   });
-  
+
   const getProject = (place: number): string => {
     const projects = data?.projects;
     const projectIndex = data?.projects?.findIndex(
