@@ -24,7 +24,6 @@ const ParallaxImages = (params: {
         end: "bottom center",
         scrub: 1,
         invalidateOnRefresh: true,
-        markers: {startColor: "blue", endColor: "pink"}
       },
     });
     const getParallaxElements = gsap.utils.selector(
