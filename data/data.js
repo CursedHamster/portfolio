@@ -80,11 +80,11 @@ export default {
     description: {
       emoji: "🐹🌸",
       titles: ["Hello!", "Вітаю!", "Hallo!"],
-      text: "I am a Front-End Developer with 2+ years of experience in creating websites and coding in general. Skilled in HTML, CSS, JavaScript, React, and Vue, I seek to use technical proficiency and creativity to develop engaging user experiences and advance in a professional career. Currently focused on enhancing animation and optimization.",
+      text: "I am a Frontend Developer with 2+ years of experience in creating websites and coding in general. Skilled in HTML, CSS, JavaScript, React, and Vue, I seek to use technical proficiency and creativity to develop engaging user experiences and advance in a professional career. Currently focused on enhancing animation and optimization.",
     },
     roles: [
-      { title: "Front-End Developer", icon: <IconCode /> },
-      { title: "Back-End Developer", icon: <IconServer /> },
+      { title: "Frontend Developer", icon: <IconCode /> },
+      { title: "Backend Developer", icon: <IconServer /> },
       { title: "Web Designer", icon: <IconColorSwatch /> },
     ],
     languages: [
@@ -301,7 +301,7 @@ export default {
       techUsed: ["Vue.js", "TypeScript", "SCSS", "GSAP", "Three.js"],
       type: "Personal project",
       year: 2024,
-      role: ["Front-End Developer", "Web Designer"],
+      role: ["Frontend Developer", "Web Designer"],
       description:
         "Vitafloe is a conceptual website designed to emulate a vitamins research center seeking sponsors and pre-orders for a new product. The platform serves as a showcase for interactive design and development techniques. Built with Vue.js, TypeScript, SCSS, GSAP, and Three.js, the website features a visually striking aesthetic through the use of 3D elements, animations, and smooth scrolling achieved with the Lenis library. Key design features include a dynamic pill capsule, interactive card elements, a scroll-linked timeline, and a phone image with a subtle transition between sections. These components are seamlessly integrated to create an immersive user experience.",
       images: {
@@ -355,8 +355,8 @@ export default {
       year: 2023,
       role: [
         "Full-Stack Developer",
-        "Front-End Developer",
-        "Back-End Developer",
+        "Frontend Developer",
+        "Backend Developer",
         "Web Designer",
       ],
       description:
@@ -404,9 +404,9 @@ export default {
       techUsed: ["Vue.js", "JavaScript", "Tailwind", "GSAP"],
       type: "Personal project",
       year: 2023,
-      role: ["Front-End Developer", "Web Designer"],
+      role: ["Frontend Developer", "Web Designer"],
       description:
-        "GOOD is a multi-page web application developed to simulate a Ukrainian pizza restaurant's online presence. The project focuses on user experience and functionality, allowing visitors to explore a digital menu, manage orders, and interact with various website elements. Built with Vue.js, JavaScript, Tailwind and GSAP, the application features a responsive layout, intuitive navigation, and dynamic interactions. Core functionalities include menu categorization, product search, cart management, and order placement. While primarily serving as a technical exercise, GOOD demonstrates proficiency in front-end development and user-centered design principles.",
+        "GOOD is a multi-page web application developed to simulate a Ukrainian pizza restaurant's online presence. The project focuses on user experience and functionality, allowing visitors to explore a digital menu, manage orders, and interact with various website elements. Built with Vue.js, JavaScript, Tailwind and GSAP, the application features a responsive layout, intuitive navigation, and dynamic interactions. Core functionalities include menu categorization, product search, cart management, and order placement. While primarily serving as a technical exercise, GOOD demonstrates proficiency in frontend development and user-centered design principles.",
       images: {
         parallax: [
           "/images/projects/good/parallax/parallax_1.png",
@@ -448,7 +448,7 @@ export default {
       techUsed: ["Vue.js", "TypeScript", "LESS", "GSAP"], //TODO: add database
       type: "Personal project",
       year: 2024,
-      role: ["Front-End Developer", "Web Designer"],
+      role: ["Frontend Developer", "Web Designer"],
       description:
         "Lumity Translate is a web application that explores the fictional language introduced in the popular animated series The Owl House. The name Lumity is a combination of the main characters Luz and Amity, the ones who used this language in the show. By translating text between English and the series' unique emoji-based language, Lumity, the project aims to create a digital tool for fans to engage with this creative linguistic concept. The application features multiple Lumity alphabets sourced from the fan community and leverages Vue.js, TypeScript, LESS, and GSAP for development. Lumity alphabets are stored in a database on Supabase to support the translation functionality.",
       images: {
@@ -491,7 +491,7 @@ export default {
       techUsed: ["React.js", "JavaScript", "GSAP"],
       type: "Personal project",
       year: 2023,
-      role: ["Front-End Developer", "Web Designer"],
+      role: ["Frontend Developer", "Web Designer"],
       description:
         "Aquashopia is an e-commerce website designed and developed using React.js, JavaScript, and GSAP. It simulates an online store specializing in decorative fish and aquarium supplies. The website features multiple pages, including a home page divided on sections, a product catalog with filtering and sorting functionalities, an about page, an info page, a sign in  up and a cart. Dynamic and visually appealing animations enhance the user experience.",
       images: {
