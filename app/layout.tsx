@@ -5,6 +5,8 @@ import "./globals.scss";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 
+import GoogleAnalytics from "./GoogleAnalytics";
+
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "900"],
   subsets: ["latin"],
@@ -43,6 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body className={poppins.className}>
         <Header />
         {children}
