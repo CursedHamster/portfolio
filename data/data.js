@@ -23,6 +23,7 @@ import {
   IconLeaf,
   IconBraces,
   IconSock,
+  IconBrandDocker,
 } from "@tabler/icons-react";
 
 export default {
@@ -123,6 +124,7 @@ export default {
       { title: "Python", icon: <IconBrandPython /> },
       { title: "Java", icon: <IconCoffee /> },
       { title: "SQL", icon: <IconSql /> },
+      { title: "Docker", icon: <IconBrandDocker /> },
     ],
     interests: [
       {
@@ -350,6 +352,7 @@ export default {
         "Spring",
         "MySQL",
         "Firebase",
+        "Docker",
       ],
       type: "Personal project",
       year: 2023,
