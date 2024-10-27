@@ -73,28 +73,28 @@ footer {
   }
 }
 
-.background_gradient {
-  position: fixed;
-  background: $primary-gradient;
-  border-radius: $border-radius-full;
-  opacity: 0.08;
-  -webkit-filter: blur(1000px);
-  filter: blur(1000px);
-  z-index: -1;
-  &_1 {
-    opacity: 0.02;
-    width: 50%;
-    height: 100svh;
-    bottom: -30svh;
-    right: -20%;
-  }
-  &_2 {
-    width: 100%;
-    height: 60svh;
-    bottom: -30svh;
-    left: -40%;
-  }
-}
+// .background_gradient {
+//   position: fixed;
+//   background: $primary-gradient;
+//   border-radius: $border-radius-full;
+//   opacity: 0.08;
+//   -webkit-filter: blur(1000px);
+//   filter: blur(1000px);
+//   z-index: -1;
+//   &_1 {
+//     opacity: 0.02;
+//     width: 50%;
+//     height: 100svh;
+//     bottom: -30svh;
+//     right: -20%;
+//   }
+//   &_2 {
+//     width: 100%;
+//     height: 60svh;
+//     bottom: -30svh;
+//     left: -40%;
+//   }
+// }
 
 .hidden {
   visibility: hidden;

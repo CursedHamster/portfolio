@@ -50,8 +50,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        <div className="background_gradient background_gradient_1"></div>
-        <div className="background_gradient background_gradient_2"></div>
+        {/* <div className="background_gradient background_gradient_1"></div>
+        <div className="background_gradient background_gradient_2"></div> */}
       </body>
     </html>
   );

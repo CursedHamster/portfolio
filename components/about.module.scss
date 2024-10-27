@@ -399,6 +399,9 @@
   position: relative;
   justify-content: center;
   overflow: hidden;
+  .grid_title {
+    padding: 0 $padding-md;
+  }
   .background_image {
     pointer-events: none;
     position: absolute;
