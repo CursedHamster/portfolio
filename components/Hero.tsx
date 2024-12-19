@@ -174,7 +174,7 @@ const Hero = () => {
         </h1>
         <div className={`${styles.subtitle_container} hidden hero_subtitle`}>
           <IconNorthStar />
-          <h3 className={styles.subtitle}>Web Developer</h3>
+          <h3 className={styles.subtitle}>Frontend Developer, UI/UX Designer</h3>
         </div>
         <div className={`${styles.buttons} hidden hero_buttons`}>
           <PrimaryButton

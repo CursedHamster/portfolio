@@ -46,7 +46,7 @@ const page = ({ params }: { params: { projectId: string } }) => {
       },
       (ctx) => {
         const { small }: any = ctx.conditions;
-        gsap
+        const firstTL = gsap
           .timeline()
           .from(`.${styles.title_container}`, {
             autoAlpha: 0,
@@ -122,6 +122,8 @@ const page = ({ params }: { params: { projectId: string } }) => {
             },
             "<"
           );
+
+          firstTL.play()
       }
     );
     gsap.utils.toArray(".project_images_container>img").forEach((el: any) =>

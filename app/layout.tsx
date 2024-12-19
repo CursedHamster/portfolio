@@ -15,12 +15,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "V.Harniuk. Portfolio",
   description:
-    "I am a Front-End Developer with 2+ years of experience in creating websites and coding in general. Skilled in HTML, CSS, JavaScript, React, and Vue, I seek to use technical proficiency and creativity to develop engaging user experiences and advance in a professional career. Currently focused on enhancing animation and optimization.",
+    "I am a Frontend Developer and UI/UX Designer with 3+ years of experience in creating visually appealing and user-friendly websites/apps. Skilled in HTML, CSS, JavaScript, React, Vue, and Figma, I am passionate about crafting exceptional digital experiences. I'm currently focused on enhancing animation, optimization, and overall user interaction.",
   keywords: [
     "Viktoriia Harniuk",
     "Front-End Developer",
     "Back-End Developer",
-    "Web Developer",
+    "UI/UX Developer",
     "Next.js",
     "React",
     "React.js",

@@ -1,5 +1,5 @@
 import {
-  IconBrandGithubFilled,
+  IconBrandBehance,
   IconMailFilled,
   IconBrandLinkedin,
   IconCode,
@@ -30,9 +30,9 @@ export default {
   sections: ["home", "about", "projects"],
   socials: [
     {
-      title: "GitHub",
-      link: "https://github.com/CursedHamster",
-      icon: <IconBrandGithubFilled />,
+      title: "Behance",
+      link: "https://www.behance.net/viktoriharniuk",
+      icon: <IconBrandBehance />,
     },
     {
       title: "Email",
@@ -80,13 +80,13 @@ export default {
   about: {
     description: {
       emoji: "🐹🌸",
-      titles: ["Hello!", "Вітаю!", "Hallo!"],
-      text: "I am a Frontend Developer with 2+ years of experience in creating websites and coding in general. Skilled in HTML, CSS, JavaScript, React, and Vue, I seek to use technical proficiency and creativity to develop engaging user experiences and advance in a professional career. Currently focused on enhancing animation and optimization.",
+      titles: ["Hello!", "Вітаю!"],
+      text: "I am a Frontend Developer and UI/UX Designer with 3+ years of experience in creating visually appealing and user-friendly websites/apps. Skilled in HTML, CSS, JavaScript, React, Vue, and Figma, I am passionate about crafting exceptional digital experiences. I'm currently focused on enhancing animation, optimization, and overall user interaction.",
     },
     roles: [
       { title: "Frontend Developer", icon: <IconCode /> },
       { title: "Backend Developer", icon: <IconServer /> },
-      { title: "Web Designer", icon: <IconColorSwatch /> },
+      { title: "UI/UX Designer", icon: <IconColorSwatch /> },
     ],
     languages: [
       {
@@ -303,7 +303,7 @@ export default {
       techUsed: ["Vue.js", "TypeScript", "SCSS", "GSAP", "Three.js"],
       type: "Personal project",
       year: 2024,
-      role: ["Frontend Developer", "Web Designer"],
+      role: ["Frontend Developer", "UI/UX Designer"],
       description:
         "Vitafloe is a conceptual website designed to emulate a vitamins research center seeking sponsors and pre-orders for a new product. The platform serves as a showcase for interactive design and development techniques. Built with Vue.js, TypeScript, SCSS, GSAP, and Three.js, the website features a visually striking aesthetic through the use of 3D elements, animations, and smooth scrolling achieved with the Lenis library. Key design features include a dynamic pill capsule, interactive card elements, a scroll-linked timeline, and a phone image with a subtle transition between sections. These components are seamlessly integrated to create an immersive user experience.",
       images: {
@@ -360,7 +360,7 @@ export default {
         "Full-Stack Developer",
         "Frontend Developer",
         "Backend Developer",
-        "Web Designer",
+        "UI/UX Designer",
       ],
       description:
         "HealthiU is a web application designed to assess an individual's obesity level through a comprehensive online test. By inputting personal health metrics, users can quickly determine their weight status and receive tailored dietary recommendations. The platform also facilitates online consultations with healthcare professionals for those seeking personalized guidance.\n\nTo enhance user interaction, HealthiU incorporates a messaging system built on WebSocket technology, enabling real-time communication between users and doctors. This feature, combined with online consultations, provides a comprehensive healthcare support system within the platform.\n\nTo ensure accuracy and scalability, HealthiU employs a robust technology stack. The frontend is built using React.js, JavaScript, Bootstrap, and GSAP, while the backend is powered by Java, Spring Boot, and a MySQL database hosted on Firebase. The application's infrastructure leverages Netlify for frontend hosting and AWS EC2 for the backend, demonstrating a comprehensive understanding of full-stack development.\n\nAs a proof-of-concept, HealthiU incorporates user management, profile management, and test result storage functionalities. The application supports multiple user roles (user, doctor, admin) with distinct access privileges and user interfaces.\n\nThrough HealthiU, I aimed to showcase my proficiency in both frontend and backend development, including WebSocket implementation for real-time communication, as well as my ability to create a functional and user-centric application.",
@@ -407,7 +407,7 @@ export default {
       techUsed: ["Vue.js", "JavaScript", "Tailwind", "GSAP"],
       type: "Personal project",
       year: 2023,
-      role: ["Frontend Developer", "Web Designer"],
+      role: ["Frontend Developer", "UI/UX Designer"],
       description:
         "GOOD is a multi-page web application developed to simulate a Ukrainian pizza restaurant's online presence. The project focuses on user experience and functionality, allowing visitors to explore a digital menu, manage orders, and interact with various website elements. Built with Vue.js, JavaScript, Tailwind and GSAP, the application features a responsive layout, intuitive navigation, and dynamic interactions. Core functionalities include menu categorization, product search, cart management, and order placement. While primarily serving as a technical exercise, GOOD demonstrates proficiency in frontend development and user-centered design principles.",
       images: {
@@ -444,49 +444,49 @@ export default {
         ],
       },
     },
-    {
-      id: "lumity",
-      title: "Lumity Translate",
-      websiteLink: "https://lumity-translate.netlify.app/",
-      techUsed: ["Vue.js", "TypeScript", "LESS", "GSAP"], //TODO: add database
-      type: "Personal project",
-      year: 2024,
-      role: ["Frontend Developer", "Web Designer"],
-      description:
-        "Lumity Translate is a web application that explores the fictional language introduced in the popular animated series The Owl House. The name Lumity is a combination of the main characters Luz and Amity, the ones who used this language in the show. By translating text between English and the series' unique emoji-based language, Lumity, the project aims to create a digital tool for fans to engage with this creative linguistic concept. The application features multiple Lumity alphabets sourced from the fan community and leverages Vue.js, TypeScript, LESS, and GSAP for development. Lumity alphabets are stored in a database on Supabase to support the translation functionality.",
-      images: {
-        parallax: [
-          "/images/projects/lumity/parallax/parallax_1.png",
-          "/images/projects/lumity/parallax/parallax_2.png",
-          "/images/projects/lumity/parallax/parallax_3.png",
-          "/images/projects/lumity/parallax/parallax_4.png",
-          "/images/projects/lumity/parallax/parallax_5.png",
-          "/images/projects/lumity/parallax/parallax_6.png",
-          "/images/projects/lumity/parallax/parallax_7.png",
-          "/images/projects/lumity/parallax/parallax_8.png",
-        ],
-        screenshots: [
-          "/images/projects/lumity/screenshots/screenshot_1.png",
-          "/images/projects/lumity/screenshots/screenshot_2.png",
-          "/images/projects/lumity/screenshots/screenshot_3.png",
-          "/images/projects/lumity/screenshots/screenshot_4.png",
-          "/images/projects/lumity/screenshots/screenshot_5.png",
-          "/images/projects/lumity/screenshots/screenshot_6.png",
-        ],
-      },
-      video: "/images/projects/lumity/lumity.mp4",
-      svg: {
-        viewBox: "0 0 379.4 71.501",
-        text: [
-          "M 22.2 0 L 22.2 54 L 43.6 54 L 43.6 70.8 L 0 70.8 L 0 0 L 22.2 0 Z",
-          "M 50.2 0 L 72.3 0 L 72.3 39.9 A 18.087 18.087 0 0 0 72.548 42.994 Q 73.031 45.769 74.45 47.65 Q 76.6 50.5 81.4 50.5 Q 84.897 50.5 87.067 48.987 A 6.914 6.914 0 0 0 88.5 47.65 A 9.743 9.743 0 0 0 90.278 44.105 Q 90.669 42.703 90.767 41.038 A 19.381 19.381 0 0 0 90.8 39.9 L 90.8 0 L 112.9 0 L 112.9 39.9 A 40.548 40.548 0 0 1 112.11 48.104 A 29.491 29.491 0 0 1 108.7 57.15 Q 104.5 64.3 97.2 67.9 A 35.166 35.166 0 0 1 84.486 71.351 A 42.584 42.584 0 0 1 80.9 71.5 A 38.309 38.309 0 0 1 72.164 70.543 A 30.905 30.905 0 0 1 64.95 67.9 Q 58 64.3 54.1 57.2 A 30.216 30.216 0 0 1 51.057 48.781 Q 50.2 44.681 50.2 39.9 L 50.2 0 Z",
-          "M 180.5 0 L 207.6 0 L 207.6 70.8 L 185.5 70.8 L 185.5 35.5 L 174.6 70.8 L 155.6 70.8 L 144.7 35.5 L 144.7 70.8 L 122.5 70.8 L 122.5 0 L 149.7 0 L 165.3 42.5 L 180.5 0 Z",
-          "M 217.6 0 L 239.8 0 L 239.8 70.8 L 217.6 70.8 L 217.6 0 Z",
-          "M 245.8 0 L 305.4 0 L 305.4 17.6 L 286.6 17.6 L 286.6 70.8 L 264.4 70.8 L 264.4 17.6 L 245.8 17.6 L 245.8 0 Z",
-          "M 354.4 0 L 379.4 0 L 354 49.3 L 354 70.8 L 331.8 70.8 L 331.8 49.3 L 306.4 0 L 331.8 0 L 343.1 25.1 L 354.4 0 Z",
-        ],
-      },
-    },
+    // {
+    //   id: "lumity",
+    //   title: "Lumity Translate",
+    //   websiteLink: "https://lumity-translate.netlify.app/",
+    //   techUsed: ["Vue.js", "TypeScript", "LESS", "GSAP"], //TODO: add database
+    //   type: "Personal project",
+    //   year: 2024,
+    //   role: ["Frontend Developer", "UI/UX Designer"],
+    //   description:
+    //     "Lumity Translate is a web application that explores the fictional language introduced in the popular animated series The Owl House. The name Lumity is a combination of the main characters Luz and Amity, the ones who used this language in the show. By translating text between English and the series' unique emoji-based language, Lumity, the project aims to create a digital tool for fans to engage with this creative linguistic concept. The application features multiple Lumity alphabets sourced from the fan community and leverages Vue.js, TypeScript, LESS, and GSAP for development. Lumity alphabets are stored in a database on Supabase to support the translation functionality.",
+    //   images: {
+    //     parallax: [
+    //       "/images/projects/lumity/parallax/parallax_1.png",
+    //       "/images/projects/lumity/parallax/parallax_2.png",
+    //       "/images/projects/lumity/parallax/parallax_3.png",
+    //       "/images/projects/lumity/parallax/parallax_4.png",
+    //       "/images/projects/lumity/parallax/parallax_5.png",
+    //       "/images/projects/lumity/parallax/parallax_6.png",
+    //       "/images/projects/lumity/parallax/parallax_7.png",
+    //       "/images/projects/lumity/parallax/parallax_8.png",
+    //     ],
+    //     screenshots: [
+    //       "/images/projects/lumity/screenshots/screenshot_1.png",
+    //       "/images/projects/lumity/screenshots/screenshot_2.png",
+    //       "/images/projects/lumity/screenshots/screenshot_3.png",
+    //       "/images/projects/lumity/screenshots/screenshot_4.png",
+    //       "/images/projects/lumity/screenshots/screenshot_5.png",
+    //       "/images/projects/lumity/screenshots/screenshot_6.png",
+    //     ],
+    //   },
+    //   video: "/images/projects/lumity/lumity.mp4",
+    //   svg: {
+    //     viewBox: "0 0 379.4 71.501",
+    //     text: [
+    //       "M 22.2 0 L 22.2 54 L 43.6 54 L 43.6 70.8 L 0 70.8 L 0 0 L 22.2 0 Z",
+    //       "M 50.2 0 L 72.3 0 L 72.3 39.9 A 18.087 18.087 0 0 0 72.548 42.994 Q 73.031 45.769 74.45 47.65 Q 76.6 50.5 81.4 50.5 Q 84.897 50.5 87.067 48.987 A 6.914 6.914 0 0 0 88.5 47.65 A 9.743 9.743 0 0 0 90.278 44.105 Q 90.669 42.703 90.767 41.038 A 19.381 19.381 0 0 0 90.8 39.9 L 90.8 0 L 112.9 0 L 112.9 39.9 A 40.548 40.548 0 0 1 112.11 48.104 A 29.491 29.491 0 0 1 108.7 57.15 Q 104.5 64.3 97.2 67.9 A 35.166 35.166 0 0 1 84.486 71.351 A 42.584 42.584 0 0 1 80.9 71.5 A 38.309 38.309 0 0 1 72.164 70.543 A 30.905 30.905 0 0 1 64.95 67.9 Q 58 64.3 54.1 57.2 A 30.216 30.216 0 0 1 51.057 48.781 Q 50.2 44.681 50.2 39.9 L 50.2 0 Z",
+    //       "M 180.5 0 L 207.6 0 L 207.6 70.8 L 185.5 70.8 L 185.5 35.5 L 174.6 70.8 L 155.6 70.8 L 144.7 35.5 L 144.7 70.8 L 122.5 70.8 L 122.5 0 L 149.7 0 L 165.3 42.5 L 180.5 0 Z",
+    //       "M 217.6 0 L 239.8 0 L 239.8 70.8 L 217.6 70.8 L 217.6 0 Z",
+    //       "M 245.8 0 L 305.4 0 L 305.4 17.6 L 286.6 17.6 L 286.6 70.8 L 264.4 70.8 L 264.4 17.6 L 245.8 17.6 L 245.8 0 Z",
+    //       "M 354.4 0 L 379.4 0 L 354 49.3 L 354 70.8 L 331.8 70.8 L 331.8 49.3 L 306.4 0 L 331.8 0 L 343.1 25.1 L 354.4 0 Z",
+    //     ],
+    //   },
+    // },
     {
       id: "aquashopia",
       title: "Aquashopia",
@@ -494,7 +494,7 @@ export default {
       techUsed: ["React.js", "JavaScript", "GSAP"],
       type: "Personal project",
       year: 2023,
-      role: ["Frontend Developer", "Web Designer"],
+      role: ["Frontend Developer", "UI/UX Designer"],
       description:
         "Aquashopia is an e-commerce website designed and developed using React.js, JavaScript, and GSAP. It simulates an online store specializing in decorative fish and aquarium supplies. The website features multiple pages, including a home page divided on sections, a product catalog with filtering and sorting functionalities, an about page, an info page, a sign in  up and a cart. Dynamic and visually appealing animations enhance the user experience.",
       images: {

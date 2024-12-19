@@ -12,7 +12,7 @@ export default function navigate(
     )
   ) {
     gsap
-      .timeline({ onComplete: () => router?.push(href) })
+      .timeline({ defaults: {duration: 0.2}, onComplete: () => router?.push(href) })
       .to(".main_opacity", { autoAlpha: 0, duration: 0.2 }, 0)
   } else {
     router?.push(href);

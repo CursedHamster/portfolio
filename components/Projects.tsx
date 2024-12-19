@@ -201,10 +201,10 @@ const Projects = () => {
   });
 
   const projectClick = contextSafe((e: any, section: string) => {
-    const element = e?.currentTarget;
-    if (element.classList.contains("main_opacity_full")) {
-      element.classList.remove("main_opacity_full");
-    }
+    // const element = e?.currentTarget;
+    // if (element.classList.contains("main_opacity_full")) {
+    //   element.classList.remove("main_opacity_full");
+    // }
     navigate("/projects/" + section, router);
   });
 
