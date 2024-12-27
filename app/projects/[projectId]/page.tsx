@@ -261,10 +261,10 @@ const page = ({ params }: { params: { projectId: string } }) => {
               alt={`Screenshot of ${projectData?.title}`}
               className={`${styles.image} hidden`}
               key={`project_screenshot_${i + 1}`}
-              width={2538}
-              height={1283}
-              priority
-              // loading="lazy"
+              width={1269}
+              height={641.5}
+              // priority
+              loading="lazy"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlZWPBAABbAC0Ii2jaQAAAABJRU5ErkJggg=="
             />

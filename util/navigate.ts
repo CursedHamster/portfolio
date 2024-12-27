@@ -5,16 +5,17 @@ export default function navigate(
   href: string,
   router: AppRouterInstance,
 ) {
-  if (
-    !(
-      window?.location?.pathname ===
-      new URL(href, window?.location?.href)?.pathname
-    )
-  ) {
-    gsap
-      .timeline({ defaults: {duration: 0.2}, onComplete: () => router?.push(href) })
-      .to(".main_opacity", { autoAlpha: 0, duration: 0.2 }, 0)
-  } else {
-    router?.push(href);
-  }
+  router?.push(href);
+  // if (
+  //   !(
+  //     window?.location?.pathname ===
+  //     new URL(href, window?.location?.href)?.pathname
+  //   )
+  // ) {
+  //   gsap
+  //     .timeline({ defaults: {duration: 0.2}, onComplete: () => router?.push(href) })
+  //     .to(".main_opacity", { autoAlpha: 0, duration: 0.2 }, 0)
+  // } else {
+  //   router?.push(href);
+  // }
 }
